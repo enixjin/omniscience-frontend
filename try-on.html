@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI时尚搭配 - 虚拟试衣</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3A5EFF;
+      --background: #F5F7FB;
+      --accent: #FF7A45;
+    }
+    .card-shadow {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .before-after-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .before-after-label {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+  <!-- 主页面容器 -->
+  <div class="max-w-md mx-auto min-h-screen flex flex-col bg-gray-100">
+    <!-- 顶部导航 -->
+    <header class="bg-white p-4 shadow-sm">
+      <div class="flex items-center justify-between">
+        <h1 class="text-xl font-bold text-blue-500">AI虚拟试衣</h1>
+        <button class="p-2 rounded-full hover:bg-gray-100">
+          <i class="fas fa-sliders-h text-gray-600"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="flex-1 p-4 overflow-y-auto">
+      <!-- 上传区域 -->
+      <div class="bg-white rounded-lg p-4 mb-4 card-shadow">
+        <h2 class="text-lg font-semibold mb-3">上传照片</h2>
+        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+          <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+          <p class="text-sm text-gray-500 mb-2">拖放照片到此处或点击上传</p>
+          <p class="text-xs text-gray-400">支持PNG/JPEG格式，大小≤10MB</p>
+          <input type="file" id="upload" class="hidden" accept="image/png,image/jpeg">
+          <label for="upload" class="inline-block mt-3 bg-blue-500 text-white px-4 py-2 rounded text-sm cursor-pointer">
+            选择照片
+          </label>
+        </div>
+      </div>
+
+      <!-- 试衣效果 -->
+      <div class="bg-white rounded-lg p-4 mb-4 card-shadow">
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="text-lg font-semibold">试衣效果</h2>
+          <button class="text-sm text-blue-500">更换服装</button>
+        </div>
+        
+        <!-- 对比效果 -->
+        <div class="before-after-container mb-4">
+          <div>
+            <div class="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
+              <img id="original-image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                class="w-full h-full object-cover">
+            </div>
+            <p class="before-after-label">原图</p>
+          </div>
+          <div>
+            <div class="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
+              <img id="try-on-image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-30"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-2">
+                <p class="text-white text-sm font-medium">修身款西装外套</p>
+                <p class="text-white text-xs">¥3,899</p>
+              </div>
+            </div>
+            <p class="before-after-label">试穿效果</p>
+          </div>
+        </div>
+
+        <!-- 搭配建议 -->
+        <div class="bg-gray-100 p-3 rounded-lg">
+          <h3 class="text-sm font-medium mb-2">搭配建议</h3>
+          <p class="text-xs text-gray-600">这款修身西装外套适合商务场合，建议搭配纯色衬衫和西裤，整体造型更显专业。</p>
+        </div>
+      </div>
+
+      <!-- 推荐搭配 -->
+      <div class="bg-white rounded-lg p-4 card-shadow">
+        <h2 class="text-lg font-semibold mb-3">推荐搭配</h2>
+        <div class="grid grid-cols-3 gap-2">
+          <div class="text-center cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+              class="w-full h-20 object-cover rounded mb-1">
+            <p class="text-xs">商务衬衫</p>
+          </div>
+          <div class="text-center cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1595341595379-c4f2a0a123b8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+              class="w-full h-20 object-cover rounded mb-1">
+            <p class="text-xs">西裤</p>
+          </div>
+          <div class="text-center cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1523170335258-f5ed118494a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+              class="w-full h-20 object-cover rounded mb-1">
+            <p class="text-xs">皮鞋</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 底部导航 -->
+    <nav class="bg-white border-t border-gray-200 flex justify-around p-3">
+      <a href="suggest.html" class="text-center text-gray-500">
+        <i class="fas fa-home block text-xl"></i>
+        <span class="text-xs">推荐</span>
+      </a>
+      <a href="profile.html" class="text-center text-gray-500">
+        <i class="fas fa-user-tie block text-xl"></i>
+        <span class="text-xs">画像</span>
+      </a>
+      <a href="try-on.html" class="text-center text-blue-500">
+        <i class="fas fa-tshirt block text-xl"></i>
+        <span class="text-xs">试衣</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    // 处理图片上传预览
+    document.getElementById('upload').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          document.getElementById('original-image').src = event.target.result;
+          document.getElementById('try-on-image').src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
+  

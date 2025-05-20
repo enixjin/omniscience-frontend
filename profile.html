@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI时尚搭配 - 用户画像</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3A5EFF;
+      --background: #F5F7FB;
+      --accent: #FF7A45;
+    }
+    .card-shadow {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+  <!-- 主页面容器 -->
+  <div class="max-w-md mx-auto min-h-screen flex flex-col bg-gray-100">
+    <!-- 顶部导航 -->
+    <header class="bg-white p-4 shadow-sm">
+      <div class="flex items-center justify-between">
+        <h1 class="text-xl font-bold text-blue-500">客户画像分析</h1>
+        <button class="p-2 rounded-full hover:bg-gray-100">
+          <i class="fas fa-sliders-h text-gray-600"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="flex-1 p-4 overflow-y-auto">
+      <!-- 搜索区 -->
+      <div class="bg-white rounded-lg p-4 mb-4 card-shadow">
+        <div class="relative mb-3">
+          <input type="tel" placeholder="输入客户手机号" 
+            class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            maxlength="11" pattern="[0-9]{11}">
+          <button class="absolute right-2 top-2 bg-blue-500 text-white p-1 rounded-lg">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <div class="text-xs text-gray-500">
+          <i class="fas fa-info-circle mr-1"></i>支持所有大陆手机号，包括虚拟运营商号段
+        </div>
+      </div>
+
+      <!-- 客户信息 -->
+      <div class="bg-white rounded-lg p-4 mb-4 card-shadow">
+        <div class="flex items-center mb-3">
+          <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center mr-3">
+            <i class="fas fa-user text-gray-500 text-xl"></i>
+          </div>
+          <div>
+            <h2 class="font-semibold">张先生</h2>
+            <p class="text-sm text-gray-500">138****1234</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2 mb-3">
+          <div class="bg-gray-100 p-2 rounded">
+            <p class="text-xs text-gray-500">年龄</p>
+            <p class="font-medium">32岁</p>
+          </div>
+          <div class="bg-gray-100 p-2 rounded">
+            <p class="text-xs text-gray-500">客单价</p>
+            <p class="font-medium text-yellow-500">5k-8k</p>
+          </div>
+          <div class="bg-gray-100 p-2 rounded">
+            <p class="text-xs text-gray-500">忠诚度</p>
+            <p class="font-medium">高</p>
+          </div>
+          <div class="bg-gray-100 p-2 rounded">
+            <p class="text-xs text-gray-500">消费潜力</p>
+            <p class="font-medium">高</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 兴趣标签 -->
+      <div class="bg-white rounded-lg p-4 mb-4 card-shadow">
+        <h2 class="text-lg font-semibold mb-3">兴趣标签</h2>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">关注西服版型</span>
+          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">询问节日促销</span>
+          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">偏好深色系</span>
+          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">商务休闲风格</span>
+          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">注重面料舒适度</span>
+        </div>
+      </div>
+
+      <!-- 聊天记录 -->
+      <div class="bg-white rounded-lg p-4 mb-4 card-shadow">
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="text-lg font-semibold">最近聊天记录</h2>
+          <button class="text-sm text-blue-500">查看全部</button>
+        </div>
+        <div class="space-y-3">
+          <div class="border-l-2 border-blue-500 pl-3">
+            <p class="text-sm font-medium">2023-12-24 14:30</p>
+            <p class="text-gray-600">"请问这款西服有修身版型吗？"</p>
+          </div>
+          <div class="border-l-2 border-blue-500 pl-3">
+            <p class="text-sm font-medium">2023-11-11 10:15</p>
+            <p class="text-gray-600">"双十一这款夹克有优惠吗？"</p>
+          </div>
+          <div class="border-l-2 border-blue-500 pl-3">
+            <p class="text-sm font-medium">2023-09-28 16:45</p>
+            <p class="text-gray-600">"我需要一套商务休闲的搭配建议"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 购买记录 -->
+      <div class="bg-white rounded-lg p-4 card-shadow">
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="text-lg font-semibold">购买记录</h2>
+          <div class="flex items-center">
+            <button class="text-sm text-blue-500 mr-3">筛选</button>
+            <button class="text-sm text-blue-500">按时间</button>
+          </div>
+        </div>
+        
+        <!-- 2023年Q4 -->
+        <details open class="mb-3">
+          <summary class="font-medium flex items-center justify-between cursor-pointer">
+            <span>2023年 第4季度</span>
+            <i class="fas fa-chevron-down text-sm transform transition-transform duration-200"></i>
+          </summary>
+          <div class="mt-2 space-y-2">
+            <div class="flex items-center p-2 hover:bg-gray-50 rounded">
+              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                class="w-12 h-12 object-cover rounded mr-3">
+              <div class="flex-1">
+                <p class="text-sm font-medium">修身款西装外套</p>
+                <p class="text-xs text-gray-500">2023-12-15  ¥3,899</p>
+              </div>
+              <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded">重复购买</span>
+            </div>
+            <div class="flex items-center p-2 hover:bg-gray-50 rounded">
+              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                class="w-12 h-12 object-cover rounded mr-3">
+              <div class="flex-1">
+                <p class="text-sm font-medium">纯棉商务衬衫</p>
+                <p class="text-xs text-gray-500">2023-11-20  ¥899</p>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <!-- 2023年Q3 -->
+        <details class="mb-3">
+          <summary class="font-medium flex items-center justify-between cursor-pointer">
+            <span>2023年 第3季度</span>
+            <i class="fas fa-chevron-down text-sm transform transition-transform duration-200"></i>
+          </summary>
+          <div class="mt-2 space-y-2">
+            <div class="flex items-center p-2 hover:bg-gray-50 rounded">
+              <img src="https://images.unsplash.com/photo-1473966968600-fa801b6a6016?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                class="w-12 h-12 object-cover rounded mr-3">
+              <div class="flex-1">
+                <p class="text-sm font-medium">修身牛仔裤</p>
+                <p class="text-xs text-gray-500">2023-09-05  ¥1,299</p>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </main>
+
+    <!-- 底部导航 -->
+    <nav class="bg-white border-t border-gray-200 flex justify-around p-3">
+      <a href="suggest.html" class="text-center text-gray-500">
+        <i class="fas fa-home block text-xl"></i>
+        <span class="text-xs">推荐</span>
+      </a>
+      <a href="profile.html" class="text-center text-blue-500">
+        <i class="fas fa-user-tie block text-xl"></i>
+        <span class="text-xs">画像</span>
+      </a>
+      <a href="try-on.html" class="text-center text-gray-500">
+        <i class="fas fa-tshirt block text-xl"></i>
+        <span class="text-xs">试衣</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    // 处理详情折叠
+    document.querySelectorAll('details').forEach(detail => {
+      detail.querySelector('summary').addEventListener('click', function() {
+        const icon = this.querySelector('i');
+        if(detail.open) {
+          icon.classList.add('rotate-180');
+        } else {
+          icon.classList.remove('rotate-180');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+  

@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI时尚搭配 - 首页</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3A5EFF;
+      --background: #F5F7FB;
+      --accent: #FF7A45;
+    }
+    .card-shadow {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .ripple {
+      animation: ripple 1.2s infinite ease-in-out;
+    }
+    @keyframes ripple {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+  <!-- 主页面容器 -->
+  <div class="max-w-md mx-auto min-h-screen flex flex-col bg-gray-100">
+    <!-- 顶部导航 -->
+    <header class="bg-white p-4 shadow-sm">
+      <div class="flex items-center justify-between">
+        <h1 class="text-xl font-bold text-blue-500">AI时尚搭配</h1>
+        <button class="p-2 rounded-full hover:bg-gray-100">
+          <i class="fas fa-sliders-h text-gray-600"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="flex-1 p-4 overflow-y-auto">
+      <!-- 需求输入区 -->
+      <div class="bg-white rounded-lg p-4 mb-4 card-shadow">
+        <h2 class="text-lg font-semibold mb-3">您的搭配需求</h2>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">商务</span>
+          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">深色系</span>
+          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">简约</span>
+        </div>
+        <div class="relative">
+          <input type="text" placeholder="描述您的搭配需求..." 
+            class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <button class="absolute right-2 top-2 bg-blue-500 text-white p-1 rounded-lg">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 推荐结果 -->
+      <div class="mb-6">
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="text-lg font-semibold">为您推荐</h2>
+          <button class="text-yellow-500 flex items-center">
+            <i class="fas fa-sync-alt mr-1"></i> 换一批
+          </button>
+        </div>
+
+        <!-- 推荐卡片1 -->
+        <div class="bg-white rounded-lg overflow-hidden mb-4 card-shadow">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+              alt="搭配示例" class="w-full h-48 object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
+              <h3 class="text-white font-medium">商务休闲套装</h3>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="text-gray-600 mb-3">这套搭配适合商务休闲场合，深色系显得稳重又不失时尚感...</p>
+            <div class="grid grid-cols-3 gap-2">
+              <div class="text-center">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                  class="w-full h-20 object-cover rounded">
+                <p class="text-xs mt-1">西装外套</p>
+              </div>
+              <div class="text-center">
+                <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                  class="w-full h-20 object-cover rounded">
+                <p class="text-xs mt-1">休闲衬衫</p>
+              </div>
+              <div class="text-center">
+                <img src="https://images.unsplash.com/photo-1595341595379-cf2a0a123b8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                  class="w-full h-20 object-cover rounded">
+                <p class="text-xs mt-1">休闲裤</p>
+              </div>
+            </div>
+            <div class="flex justify-between mt-3">
+              <button class="text-yellow-500 text-sm">调整需求</button>
+              <button class="bg-blue-500 text-white px-3 py-1 rounded text-sm">试穿效果</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 推荐卡片2 -->
+        <div class="bg-white rounded-lg overflow-hidden mb-4 card-shadow">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+              alt="搭配示例" class="w-full h-48 object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
+              <h3 class="text-white font-medium">派对时尚套装</h3>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="text-gray-600 mb-3">这套搭配适合派对场合，时尚前卫的设计让您成为焦点...</p>
+            <div class="grid grid-cols-3 gap-2">
+              <div class="text-center">
+                <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                  class="w-full h-20 object-cover rounded">
+                <p class="text-xs mt-1">时尚夹克</p>
+              </div>
+              <div class="text-center">
+                <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                  class="w-full h-20 object-cover rounded">
+                <p class="text-xs mt-1">印花T恤</p>
+              </div>
+              <div class="text-center">
+                <img src="https://images.unsplash.com/photo-1473966968600-fa801b6a6016?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                  class="w-full h-20 object-cover rounded">
+                <p class="text-xs mt-1">修身牛仔裤</p>
+              </div>
+            </div>
+            <div class="flex justify-between mt-3">
+              <button class="text-yellow-500 text-sm">调整需求</button>
+              <button class="bg-blue-500 text-white px-3 py-1 rounded text-sm">试穿效果</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 底部导航 -->
+    <nav class="bg-white border-t border-gray-200 flex justify-around p-3">
+      <a href="suggest.html" class="text-center text-blue-500">
+        <i class="fas fa-home block text-xl"></i>
+        <span class="text-xs">推荐</span>
+      </a>
+      <a href="profile.html" class="text-center text-gray-500">
+        <i class="fas fa-user-tie block text-xl"></i>
+        <span class="text-xs">画像</span>
+      </a>
+      <a href="try-on.html" class="text-center text-gray-500">
+        <i class="fas fa-tshirt block text-xl"></i>
+        <span class="text-xs">试衣</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- 加载动画 -->
+  <div id="loading" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="relative w-16 h-16">
+      <div class="absolute inset-0 rounded-full bg-blue-500 opacity-60 ripple"></div>
+      <div class="absolute inset-2 rounded-full bg-blue-500 opacity-80 ripple" style="animation-delay: 0.4s"></div>
+      <div class="absolute inset-4 rounded-full bg-blue-500 ripple" style="animation-delay: 0.8s"></div>
+    </div>
+  </div>
+
+  <!-- 错误提示 -->
+  <div id="toast" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hidden">
+    操作失败，请重试
+  </div>
+
+  <script>
+    // 模拟加载
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if(this.textContent.includes('换一批') || this.textContent.includes('试穿效果')) {
+          document.getElementById('loading').classList.remove('hidden');
+          setTimeout(() => {
+            document.getElementById('loading').classList.add('hidden');
+            // 模拟随机错误
+            if(Math.random() > 0.8) {
+              showToast('网络请求超时');
+            }
+          }, 1500);
+        }
+      });
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+  </script>
+</body>
+</html>
+  

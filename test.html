@@ -23,23 +23,24 @@
             flex-direction: column;
         }
         
-        h1 {
-            color: #333;
-            margin-bottom: 15px; /* 减少标题底部间距 */
-            text-align: center;
-            font-size: 1.5em;
-        }
-        
+        /* 主要容器样式 - 修改为唯一定义 */
         .container {
-            max-width: 800px;
+            max-width: 800px; /* 恢复为原始设计的宽度 */
             margin: 0 auto;
             padding: 15px;
             background-color: #f9f9f9;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            min-height: 650px;
+            min-height: 650px; /* 使用原始设计的高度 */
             display: flex;
             flex-direction: column;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 15px; /* 减少标题底部间距 */
+            text-align: center;
+            font-size: 1.5em;
         }
         
         .main-content {
@@ -493,7 +494,7 @@
                     return;
                 }
 
-                document.getElementById('thirdApiResponse').value = `正在调用新 API (尝试次数: ${retryCount + 1})...`;
+                document.getElementById('thirdApiResponse').value = `正在调用新 API (尝试次数: ${retryCount + 1})...\n${finalUrl}`;
 
                 // 使用构建好的URL进行请求
                 fetch(finalUrl)
@@ -536,7 +537,9 @@
                     })
                     .catch(error => {
                         console.error('Fetch error:', error);
-                        document.getElementById('thirdApiResponse').value = `新 API 调用失败: ${error.message}`;
+                        // Modified to include URL and response JSON in error message
+                        const errorMessage = `新 API 调用失败: ${error.message}`;
+                        document.getElementById('thirdApiResponse').value = errorMessage;
                         disableButton('executeExtractedTextBtn', false);
                         
                         // 出现错误时恢复API按钮状态

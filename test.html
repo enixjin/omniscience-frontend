@@ -538,7 +538,7 @@
                     .catch(error => {
                         console.error('Fetch error:', error);
                         // Modified to include URL and response JSON in error message
-                        const errorMessage = `新 API 调用失败: ${error.message}`;
+                        const errorMessage = `新 API 调用失败: ${error.message} |  URL: ${finalUrl} | Response: ${JSON.stringify(data)}`;
                         document.getElementById('thirdApiResponse').value = errorMessage;
                         disableButton('executeExtractedTextBtn', false);
                         

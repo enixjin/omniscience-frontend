@@ -105,12 +105,12 @@
             <p class="text-xs">商务衬衫</p>
           </div>
           <div class="text-center cursor-pointer">
-            <img src="https://images.unsplash.com/photo-1595341595379-c4f2a0a123b8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+            <img src="https://images.unsplash.com/photo-1516540896870-2aed89d0288f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
               class="w-full h-20 object-cover rounded mb-1">
             <p class="text-xs">西裤</p>
           </div>
           <div class="text-center cursor-pointer">
-            <img src="https://images.unsplash.com/photo-1523170335258-f5ed118494a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+            <img src="https://images.unsplash.com/photo-1625357165350-bdbcb6d7d524?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               class="w-full h-20 object-cover rounded mb-1">
             <p class="text-xs">皮鞋</p>
           </div>
@@ -136,18 +136,38 @@
   </div>
 
   <script>
+    const signedUrl = "http://groupd-image.oss-cn-shanghai.aliyuncs.com/uploadimage.jpg?x-oss-credential=LTAI5t65Dpa6dFQKpQQMnPLX%2F20250604%2Fcn-shanghai%2Foss%2Faliyun_v4_request&x-oss-date=20250604T030702Z&x-oss-expires=3600&x-oss-signature-version=OSS4-HMAC-SHA256&x-oss-signature=4988795f97a6ba450c72d900cf0bbaf35ca655f6e9ee5434e6ad19ff1c306c8a"; 
     // 处理图片上传预览
     document.getElementById('upload').addEventListener('change', function(e) {
       const file = e.target.files[0];
       if (file) {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-          document.getElementById('original-image').src = event.target.result;
-          document.getElementById('try-on-image').src = event.target.result;
-        };
-        reader.readAsDataURL(file);
+        try {
+                upload(file, signedUrl);
+                alert('File uploaded successfully!');
+            } catch (error) {
+                console.error('Error during upload:', error);
+                alert('Upload failed: ' + error.message);
+            }
       }
     });
+
+    /**
+         * 上传文件到 OSS
+         * @param {File} file - 需要上传的文件
+         * @param {string} presignedUrl - 预签名 URL
+         */
+        const upload = async (file, presignedUrl) => {
+            const response = await fetch(presignedUrl, {
+                method: 'PUT',
+                body: file,  // 直接上传整个文件
+            });
+
+            if (!response.ok) {
+                throw new Error(`Upload failed, status: ${response.status}`);
+            }
+
+            console.log('File uploaded successfully');
+        };
   </script>
 </body>
 </html>

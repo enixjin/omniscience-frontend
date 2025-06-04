@@ -12,29 +12,19 @@
         }
         
         .container {
-            max-width: 1200px; /* 增加容器宽度至原来的1.5倍 */
+            max-width: 960px; /* 使用更合适的容器宽度 */
             margin: 0 auto;
-            padding: 15px;
+            padding: 20px;
             background-color: #f9f9f9;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            min-height: 585px; /* 减少高度至原来的90%（650*0.9=585）*/
+            min-height: 600px; /* 统一高度值 */
             display: flex;
             flex-direction: column;
         }
         
         /* 主要容器样式 - 修改为唯一定义 */
-        .container {
-            max-width: 800px; /* 恢复为原始设计的宽度 */
-            margin: 0 auto;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            min-height: 650px; /* 使用原始设计的高度 */
-            display: flex;
-            flex-direction: column;
-        }
+
         
         h1 {
             color: #333;
@@ -46,9 +36,9 @@
         .main-content {
             display: flex;
             flex-direction: row; /* 使子元素水平排列 */
-            gap: 30px; /* 增加内容区域之间的间距以适应更大的宽度 */
+            gap: 40px; /* 增加内容区域之间的间距 */
             flex: 1;
-            min-height: 485px; /* 调整主内容区域高度 */
+            min-height: 500px; /* 统一主内容区域高度 */
         }
         
         .form-section {
@@ -184,14 +174,28 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .form-section,
+            .image-section {
+                width: 100%;
+                min-width: 0;
+            }
+            
             .radio-group label {
                 display: block;
                 margin-bottom: 10px;
             }
             
             .input-group, .radio-group, .button-group {
-                margin-bottom: 25px;
+                margin-bottom: 20px;
+            }
+            
+            .thumbnail {
+                max-height: 100px;
             }
         }
         
@@ -256,7 +260,7 @@
                 <div class="input-group">
                     <div class="button-group">
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <button id="callApiBtn">调用 API</button>
+                            <button id="callApiBtn" style="min-width: 120px;">调用 API</button>
                             <label style="font-size: 0.9em; color: #555; display: flex; align-items: center; gap: 5px;">
                                 <input type="checkbox" id="useProxyCheckbox" checked>
                                 使用代理
@@ -301,27 +305,27 @@
             <div class="image-section">
                 <div style="width: 100%; max-width: 600px;">
                     <div class="section-title">返回的图片：</div>
-                    <img id="returnedImage" src="" alt="Returned Image" style="display:none; width: 100%; height: auto;">
-                    <div id="imageLoading" style="display: flex; align-items: center; justify-content: center; margin-top: 20px; min-height: 485px;">
+                    <img id="returnedImage" src="" alt="Returned Image" style="display:none; width: 100%; height: auto; max-height: 500px; object-fit: contain;">
+                    <div id="imageLoading" style="display: flex; align-items: center; justify-content: center; margin-top: 20px; min-height: 500px;">
                         未加载图片
                     </div>
-                    
-                    <!-- 新增的三个缩略图显示 -->
-                    <div style="margin-top: 30px;">
-                        <div class="section-title">输入图片预览：</div>
-                        <div style="display: flex; justify-content: space-between; gap: 20px;">
-                            <div style="flex: 1; min-width: 0;">
-                                <label style="font-size: 0.85em; color: #666;">Person Image</label>
-                                <img id="personThumbnail" class="thumbnail" src="" alt="Person Image Preview" style="display: none;">
-                            </div>
-                            <div style="flex: 1; min-width: 0;">
-                                <label style="font-size: 0.85em; color: #666;">Top Garment</label>
-                                <img id="topThumbnail" class="thumbnail" src="" alt="Top Garment Preview" style="display: none;">
-                            </div>
-                            <div style="flex: 1; min-width: 0;">
-                                <label style="font-size: 0.85em; color: #666;">Bottom Garment</label>
-                                <img id="bottomThumbnail" class="thumbnail" src="" alt="Bottom Garment Preview" style="display: none;">
-                            </div>
+                </div>
+                
+                <!-- 新增的三个缩略图显示 -->
+                <div style="margin-left: 40px; width: 220px;">
+                    <div class="section-title">输入图片预览</div>
+                    <div style="display: flex; flex-direction: column; gap: 25px;">
+                        <div style="flex: 1; min-width: 0;">
+                            <label style="font-size: 0.85em; color: #666; margin-bottom: 5px;">Person Image</label>
+                            <img id="personThumbnail" class="thumbnail" src="" alt="Person Image Preview" style="display: block; width: 100%; height: auto; max-height: 120px;">
+                        </div>
+                        <div style="flex: 1; min-width: 0;">
+                            <label style="font-size: 0.85em; color: #666; margin-bottom: 5px;">Top Garment</label>
+                            <img id="topThumbnail" class="thumbnail" src="" alt="Top Garment Preview" style="display: block; width: 100%; height: auto; max-height: 120px;">
+                        </div>
+                        <div style="flex: 1; min-width: 0;">
+                            <label style="font-size: 0.85em; color: #666; margin-bottom: 5px;">Bottom Garment</label>
+                            <img id="bottomThumbnail" class="thumbnail" src="" alt="Bottom Garment Preview" style="display: block; width: 100%; height: auto; max-height: 120px;">
                         </div>
                     </div>
                 </div>
@@ -533,12 +537,15 @@
                             // 错误情况下保持空间占用以维持布局稳定
                             const loadingIndicator = document.getElementById('imageLoading');
                             loadingIndicator.style.display = 'flex';
+                            
+                            // 添加这一行来恢复API按钮状态
+                            document.getElementById('callApiBtn').textContent = '调用 API';
                         }
                     })
                     .catch(error => {
                         console.error('Fetch error:', error);
                         // Modified to include URL and response JSON in error message
-                        const errorMessage = `新 API 调用失败: ${error.message} |  URL: ${finalUrl} | Response: ${JSON.stringify(data)}`;
+                        const errorMessage = `新 API 调用失败: ${error.message} |  URL: ${finalUrl}`;
                         document.getElementById('thirdApiResponse').value = errorMessage;
                         disableButton('executeExtractedTextBtn', false);
                         

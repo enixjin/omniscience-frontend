@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,60 +11,71 @@
             margin: 10px;
             line-height: 1.4;
         }
-        
+
         .container {
-            max-width: 1200px; /* 增加容器宽度至原来的1.5倍 */
+            max-width: 1200px;
+            /* 增加容器宽度至原来的1.5倍 */
             margin: 0 auto;
             padding: 15px;
             background-color: #f9f9f9;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            min-height: 585px; /* 减少高度至原来的90%（650*0.9=585）*/
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            min-height: 585px;
+            /* 减少高度至原来的90%（650*0.9=585）*/
             display: flex;
             flex-direction: column;
         }
-        
+
         /* 主要容器样式 - 修改为唯一定义 */
 
-        
+
         h1 {
             color: #333;
-            margin-bottom: 15px; /* 减少标题底部间距 */
+            margin-bottom: 15px;
+            /* 减少标题底部间距 */
             text-align: center;
             font-size: 1.5em;
         }
-        
+
         .main-content {
             display: flex;
-            flex-direction: row; /* 使子元素水平排列 */
-            gap: 30px; /* 增加内容区域之间的间距以适应更大的宽度 */
+            flex-direction: row;
+            /* 使子元素水平排列 */
+            gap: 30px;
+            /* 增加内容区域之间的间距以适应更大的宽度 */
             flex: 1;
-            min-height: 485px; /* 调整主内容区域高度 */
+            min-height: 485px;
+            /* 调整主内容区域高度 */
         }
-        
+
         .form-section {
-            flex: 1; /* 减少表单部分比例，让图片获得更多空间 */
+            flex: 1;
+            /* 减少表单部分比例，让图片获得更多空间 */
             min-width: 300px;
             overflow-y: auto;
         }
-        
+
         .image-section {
-            flex: 2; /* 给图片部分更多空间 */
+            flex: 2;
+            /* 给图片部分更多空间 */
             min-width: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 485px; /* 添加最小高度以保持空间 */
+            min-height: 485px;
+            /* 添加最小高度以保持空间 */
         }
-        
-        .input-group, .radio-group, .button-group {
+
+        .input-group,
+        .radio-group,
+        .button-group {
             margin-bottom: 15px;
             background-color: #fff;
             padding: 10px;
             border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
-        
+
         label {
             display: block;
             margin-bottom: 5px;
@@ -71,7 +83,7 @@
             color: #555;
             font-size: 0.95em;
         }
-        
+
         input[type="text"] {
             width: 100%;
             padding: 6px 10px;
@@ -80,7 +92,7 @@
             font-size: 0.95em;
             box-sizing: border-box;
         }
-        
+
         .radio-group label {
             display: inline-block;
             margin-right: 15px;
@@ -89,7 +101,7 @@
             padding: 0;
             font-size: 0.95em;
         }
-        
+
         textarea {
             width: 100%;
             height: 80px;
@@ -101,15 +113,15 @@
             font-size: 0.9em;
             margin-top: 5px;
         }
-        
+
         img {
             max-width: 100%;
             height: auto;
             border: 1px solid #eee;
             border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        
+
         button {
             background-color: #007bff;
             color: white;
@@ -121,11 +133,11 @@
             transition: background-color 0.3s ease;
             min-width: 100px;
         }
-        
+
         button:hover {
             background-color: #0056b3;
         }
-        
+
         .section-title {
             color: #222;
             margin-bottom: 15px;
@@ -133,7 +145,7 @@
             border-bottom: 1px solid #eee;
             padding-bottom: 5px;
         }
-        
+
         /* 可折叠区域样式 */
         .collapsible-header {
             cursor: pointer;
@@ -144,7 +156,7 @@
             font-weight: bold;
             margin-top: -30px;
         }
-        
+
         .collapsible-header span {
             display: inline-block;
             width: 15px;
@@ -156,51 +168,63 @@
             margin-right: 5px;
             transition: transform 0.3s ease;
         }
-        
+
         .collapsible-content {
             overflow: hidden;
             transition: max-height 0.3s ease-out;
             max-height: 0;
         }
-        
+
         .collapsible-content.expanded {
             display: block;
-            max-height: 500px; /* 根据内容调整 */
+            max-height: 500px;
+            /* 根据内容调整 */
             animation: fadeIn 0.3s ease-in;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         @media (max-width: 600px) {
             .radio-group label {
                 display: block;
                 margin-bottom: 10px;
             }
-            
-            .input-group, .radio-group, .button-group {
+
+            .input-group,
+            .radio-group,
+            .button-group {
                 margin-bottom: 25px;
             }
         }
-        
+
         .thumbnail {
             width: 100%;
             height: auto;
-            max-height: 120px; /* 增加缩略图最大高度以适应更大的布局 */
+            max-height: 120px;
+            /* 增加缩略图最大高度以适应更大的布局 */
             object-fit: contain;
             margin-top: 5px;
             border: 1px solid #eee;
             border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>API 调用示例</h1>
-        
+
         <div class="main-content">
             <div class="form-section" style="min-width: 300px;">
                 <!-- 手机号输入 -->
@@ -214,7 +238,7 @@
                     <div class="section-title">请选择操作类型：</div>
                     <div class="radio-group">
                         <label>
-                            <input type="radio" name="option" value="客户画像" > 客户画像 (暂未实现)
+                            <input type="radio" name="option" value="客户画像"> 客户画像 (暂未实现)
                         </label>
                         <label>
                             <input type="radio" name="option" value="产品推荐"> 产品推荐 (暂未实现)
@@ -230,15 +254,23 @@
                     <div class="section-title">请提供图片链接：</div>
                     <div class="input-group">
                         <label for="personImageUrl">Person Image URL:</label>
-                        <input type="text" id="personImageUrl" value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/eva.png">
+                        <input type="text" id="personImageUrl"
+                            value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/eva.png">
+                        <input type="file" id="upload" class="hidden" accept="image/png,image/jpeg">
+                        <label for="upload"
+                            class="inline-block mt-3 bg-blue-500 text-white px-4 py-2 rounded text-sm cursor-pointer">
+                            选择照片
+                        </label>
                     </div>
                     <div class="input-group">
                         <label for="topGarmentUrl">Top Garment URL:</label>
-                        <input type="text" id="topGarmentUrl" value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/top.jpeg">
+                        <input type="text" id="topGarmentUrl"
+                            value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/top.jpeg">
                     </div>
                     <div class="input-group">
                         <label for="bottomGarmentUrl">Bottom Garment URL:</label>
-                        <input type="text" id="bottomGarmentUrl" value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg">
+                        <input type="text" id="bottomGarmentUrl"
+                            value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg">
                     </div>
                 </div>
 
@@ -286,32 +318,37 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- 返回图片显示 -->
             <div class="image-section">
                 <div style="width: 100%; max-width: 600px;">
                     <div class="section-title">返回的图片：</div>
-                    <img id="returnedImage" src="" alt="Returned Image" style="display:none; align-items: center; justify-content: center; width: auto; height: auto;">
-                    <div id="imageLoading" style="display: flex; align-items: center; justify-content: center; margin-top: 20px; min-height: 485px;">
+                    <img id="returnedImage" src="" alt="Returned Image"
+                        style="display:none; align-items: center; justify-content: center; width: auto; height: auto;">
+                    <div id="imageLoading"
+                        style="display: flex; align-items: center; justify-content: center; margin-top: 20px; min-height: 485px;">
                         未加载图片
                     </div>
                 </div>
-                
+
                 <!-- 新增的三个缩略图显示 -->
                 <div style="margin-left: 30px; width: 200px;">
                     <div class="section-title">输入图片预览：</div>
                     <div style="display: flex; flex-direction: column; gap: 20px;">
                         <div style="flex: 1; min-width: 0;">
                             <label style="font-size: 0.85em; color: #666;">Person Image</label>
-                            <img id="personThumbnail" class="thumbnail" src="" alt="Person Image Preview" style="display: none;">
+                            <img id="personThumbnail" class="thumbnail" src="" alt="Person Image Preview"
+                                style="display: none;">
                         </div>
                         <div style="flex: 1; min-width: 0;">
                             <label style="font-size: 0.85em; color: #666;">Top Garment</label>
-                            <img id="topThumbnail" class="thumbnail" src="" alt="Top Garment Preview" style="display: none;">
+                            <img id="topThumbnail" class="thumbnail" src="" alt="Top Garment Preview"
+                                style="display: none;">
                         </div>
                         <div style="flex: 1; min-width: 0;">
                             <label style="font-size: 0.85em; color: #666;">Bottom Garment</label>
-                            <img id="bottomThumbnail" class="thumbnail" src="" alt="Bottom Garment Preview" style="display: none;">
+                            <img id="bottomThumbnail" class="thumbnail" src="" alt="Bottom Garment Preview"
+                                style="display: none;">
                         </div>
                     </div>
                 </div>
@@ -320,6 +357,50 @@
     </div>
 
     <script>
+        // 处理图片上传预览
+        document.getElementById('upload').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const filename = file.name;
+            //   alert(`upload filename:${filename}`);
+            if (file) {
+                try {
+                    upload(file).then(() => {
+                        // alert('File uploaded successfully!');
+                    });
+                } catch (error) {
+                    console.error('Error during upload:', error);
+                    //   alert('Upload failed: ' + error.message);
+                }
+            }
+        });
+
+        /**
+             * 上传文件到 OSS
+             * @param {File} file - 需要上传的文件
+             * @param {string} presignedUrl - 预签名 URL
+             */
+        const upload = async (file) => {
+            const signresponse = await fetch(`http://8.140.56.123/api/get_post_signature_for_oss_upload?fileName=${file.name}`, { method: "GET" });
+            if (signresponse.ok) {
+                let sign = await signresponse.json();
+                let presignedUrl = sign.signatureUrl;
+                // alert(`presignurl is ${presignedUrl}`);
+                const response = await fetch(presignedUrl, {
+                    method: 'PUT',
+                    body: file,  // 直接上传整个文件
+                });
+                if (!response.ok) {
+                    //   alert(`Upload failed ${JSON.parse(response)}`);
+                    throw new Error(`Upload failed, status: ${response.status}`);
+                }
+                document.getElementById("personImageUrl").value = `https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`;
+                document.getElementById("personImageUrl").dispatchEvent(new Event('input'));
+                document.getElementById("personThumbnail").src = `https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`;
+                // alert(`https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`);
+            }
+        };
+
+
         const PROXY_URL = 'http://8.140.56.123/proxy';
 
         function isValidUrl(url) {
@@ -337,10 +418,10 @@
         }
 
         // 为可折叠区域添加点击事件
-        document.querySelector('.collapsible-header').addEventListener('click', function() {
+        document.querySelector('.collapsible-header').addEventListener('click', function () {
             const content = this.nextElementSibling;
             const arrow = this.querySelector('span');
-            
+
             // 切换展开/收起状态
             if (content.style.display === 'none') {
                 content.style.display = 'block';
@@ -348,7 +429,7 @@
                 // 如果是展开状态且已经有内容，直接显示
                 if (content.querySelector('#apiResponse').value !== '') {
                     content.classList.add('expanded');
-                } 
+                }
                 // 如果是首次展开且没有内容，则触发API调用获取数据
                 else {
                     document.getElementById('callApiBtn').click();
@@ -371,7 +452,7 @@
             document.getElementById('thirdApiResponse').value = '';
             document.getElementById('returnedImage').src = '';
             document.getElementById('returnedImage').style.display = 'none';
-            
+
             const phone = document.getElementById('phone').value.trim();
             const selectedOption = document.querySelector('input[name="option"]:checked').value;
 
@@ -424,22 +505,22 @@
                 },
                 body: JSON.stringify(requestData)
             })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('apiResponse').value = JSON.stringify(data, null, 2);
-                const extractedText = data.output?.text || '未找到 "text" 字段';
-                document.getElementById('extractedText').value = extractedText;
-                
-                // 在获取到有效的extractedText后自动触发执行提取的文本按钮
-                if (extractedText && extractedText !== '未找到 "text" 字段') {
-                    document.getElementById('executeExtractedTextBtn').click();
-                }
-            })
-            .catch(error => {
-                document.getElementById('apiResponse').value = `API 调用失败: ${error.message}`;
-                document.getElementById('extractedText').value = '';
-            })
-            .finally(() => disableButton('callApiBtn', false));
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('apiResponse').value = JSON.stringify(data, null, 2);
+                    const extractedText = data.output?.text || '未找到 "text" 字段';
+                    document.getElementById('extractedText').value = extractedText;
+
+                    // 在获取到有效的extractedText后自动触发执行提取的文本按钮
+                    if (extractedText && extractedText !== '未找到 "text" 字段') {
+                        document.getElementById('executeExtractedTextBtn').click();
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('apiResponse').value = `API 调用失败: ${error.message}`;
+                    document.getElementById('extractedText').value = '';
+                })
+                .finally(() => disableButton('callApiBtn', false));
         });
 
         // 修改执行提取的文本按钮逻辑，以便在图片加载完成后恢复API按钮状态
@@ -464,23 +545,23 @@
 
             // 检查是否选中了使用代理
             const useProxy = document.getElementById('useProxyCheckbox').checked;
-            
+
             // 构建最终的URL（根据是否使用代理）
-            let finalUrl = useProxy 
+            let finalUrl = useProxy
                 ? `${PROXY_URL}?url=${encodeURIComponent(apiRequest.url)}&headers=${encodeURIComponent(JSON.stringify(apiRequest.headers))}`
                 : apiRequest.url;
-            
+
             // 新增轮询函数来处理API请求
             const pollForResult = (retryCount = 0) => {
                 if (retryCount >= 10) { // 最大重试次数，防止无限循环
                     document.getElementById('thirdApiResponse').value = '任务等待超时';
                     disableButton('executeExtractedTextBtn', false);
-                    
+
                     // 恢复API按钮状态
                     const apiButton = document.getElementById('callApiBtn');
                     apiButton.textContent = '调用 API';
                     disableButton('callApiBtn', false);
-                    
+
                     return;
                 }
 
@@ -502,7 +583,7 @@
                             setTimeout(() => {
                                 pollForResult(retryCount + 1);
                             }, 3000); // 3秒后重试
-                        } 
+                        }
                         // 如果 task_status 是 SUCCEEDED 并且有 image_url，则显示图片
                         else if (data.output && data.output.task_status === 'SUCCEEDED' && data.output.image_url) {
                             const imageElement = document.getElementById('returnedImage');
@@ -510,20 +591,20 @@
                             imageElement.src = data.output.image_url;
                             imageElement.style.display = 'block';
                             loadingIndicator.style.display = 'none';
-                            
+
                             // 图片成功加载后恢复API按钮状态
                             const apiButton = document.getElementById('callApiBtn');
                             apiButton.textContent = '调用 API';
                             disableButton('callApiBtn', false);
-                        } 
+                        }
                         else {
                             // 其他情况结束加载状态
                             disableButton('executeExtractedTextBtn', false);
-                            
+
                             // 错误情况下保持空间占用以维持布局稳定
                             const loadingIndicator = document.getElementById('imageLoading');
                             loadingIndicator.style.display = 'flex';
-                            
+
                             // 添加这一行来恢复API按钮状态
                             document.getElementById('callApiBtn').textContent = '调用 API';
                         }
@@ -534,7 +615,7 @@
                         const errorMessage = `新 API 调用失败: ${error.message} |  URL: ${finalUrl}`;
                         document.getElementById('thirdApiResponse').value = errorMessage;
                         disableButton('executeExtractedTextBtn', false);
-                        
+
                         // 出现错误时恢复API按钮状态
                         const apiButton = document.getElementById('callApiBtn');
                         apiButton.textContent = '调用 API';
@@ -549,56 +630,59 @@
             imageElement.style.display = 'none';
             // 设置加载指示器为flex显示以维持空间占用
             loadingIndicator.style.display = 'flex';
-            
+
             pollForResult(0);
         });
 
         // 图片预览功能
         function updateThumbnail(imageElementId, url) {
             const imgElement = document.getElementById(imageElementId);
-            
+
             // 验证URL是否有效
             if (!url || !isValidUrl(url)) {
                 imgElement.style.display = 'none';
                 return;
             }
-            
+
             // 设置图片源并显示图片
             imgElement.src = url;
             imgElement.style.display = 'block';
         }
-        
+
         // 为图片URL输入框添加input事件监听器
         function setupUrlInputListeners() {
             const urls = ['personImageUrl', 'topGarmentUrl', 'bottomGarmentUrl'];
             const thumbnails = ['personThumbnail', 'topThumbnail', 'bottomThumbnail'];
-            
+
             urls.forEach((urlId, index) => {
                 const inputElement = document.getElementById(urlId);
                 const thumbnailId = thumbnails[index];
-                
+
                 if (inputElement) {
-                    inputElement.addEventListener('input', function() {
+                    inputElement.addEventListener('input', function () {
                         updateThumbnail(thumbnailId, this.value);
                     });
-                    
+                    inputElement.addEventListener('change', function () {
+                        updateThumbnail(thumbnailId, this.value);
+                    });
+
                     // 初始化显示
                     updateThumbnail(thumbnailId, inputElement.value);
                 }
             });
         }
-        
+
         // 在DOM加载完成后初始化事件监听器
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             setupUrlInputListeners();
-            
+
             // 如果有现有值，触发初始加载
             ['personImageUrl', 'topGarmentUrl', 'bottomGarmentUrl'].forEach(id => {
                 const input = document.getElementById(id);
                 if (input && input.value) {
                     updateThumbnail(
-                        id === 'personImageUrl' ? 'personThumbnail' : 
-                        id === 'topGarmentUrl' ? 'topThumbnail' : 'bottomThumbnail',
+                        id === 'personImageUrl' ? 'personThumbnail' :
+                            id === 'topGarmentUrl' ? 'topThumbnail' : 'bottomThumbnail',
                         input.value
                     );
                 }
@@ -607,4 +691,5 @@
 
     </script>
 </body>
+
 </html>

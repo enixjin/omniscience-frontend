@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,71 +10,61 @@
             margin: 10px;
             line-height: 1.4;
         }
-
+        
         .container {
-            max-width: 1200px;
-            /* 增加容器宽度至原来的1.5倍 */
+            max-width: 1200px; /* 增加容器宽度至原来的1.5倍 */
             margin: 0 auto;
             padding: 15px;
             background-color: #f9f9f9;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            min-height: 585px;
-            /* 减少高度至原来的90%（650*0.9=585）*/
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-height: 585px; /* 减少高度至原来的90%（650*0.9=585）*/
             display: flex;
             flex-direction: column;
         }
-
+        
         /* 主要容器样式 - 修改为唯一定义 */
 
-
+        
         h1 {
             color: #333;
-            margin-bottom: 15px;
-            /* 减少标题底部间距 */
+            margin-bottom: 15px; /* 减少标题底部间距 */
             text-align: center;
             font-size: 1.5em;
         }
-
+        
         .main-content {
             display: flex;
-            flex-direction: row;
-            /* 使子元素水平排列 */
-            gap: 30px;
-            /* 增加内容区域之间的间距以适应更大的宽度 */
+            flex-direction: row; /* 使子元素水平排列 */
+            gap: 30px; /* 增加内容区域之间的间距以适应更大的宽度 */
             flex: 1;
-            min-height: 485px;
-            /* 调整主内容区域高度 */
+            min-height: 485px; /* 调整主内容区域高度 */
         }
-
+        
         .form-section {
-            flex: 1;
-            /* 减少表单部分比例，让图片获得更多空间 */
+            flex: 1; /* 减少表单部分比例，让图片获得更多空间 */
             min-width: 300px;
+            width: 400px;
             overflow-y: auto;
         }
-
+        
         .image-section {
-            flex: 2;
-            /* 给图片部分更多空间 */
+            flex: 2; /* 给图片部分更多空间 */
             min-width: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 485px;
-            /* 添加最小高度以保持空间 */
+            min-height: 485px; /* 添加最小高度以保持空间 */
         }
-
-        .input-group,
-        .radio-group,
-        .button-group {
+        
+        .input-group, .radio-group, .button-group {
             margin-bottom: 15px;
             background-color: #fff;
             padding: 10px;
             border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-
+        
         label {
             display: block;
             margin-bottom: 5px;
@@ -83,7 +72,7 @@
             color: #555;
             font-size: 0.95em;
         }
-
+        
         input[type="text"] {
             width: 100%;
             padding: 6px 10px;
@@ -92,7 +81,7 @@
             font-size: 0.95em;
             box-sizing: border-box;
         }
-
+        
         .radio-group label {
             display: inline-block;
             margin-right: 15px;
@@ -101,7 +90,7 @@
             padding: 0;
             font-size: 0.95em;
         }
-
+        
         textarea {
             width: 100%;
             height: 80px;
@@ -113,15 +102,15 @@
             font-size: 0.9em;
             margin-top: 5px;
         }
-
+        
         img {
             max-width: 100%;
             height: auto;
             border: 1px solid #eee;
             border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
+        
         button {
             background-color: #007bff;
             color: white;
@@ -133,11 +122,11 @@
             transition: background-color 0.3s ease;
             min-width: 100px;
         }
-
+        
         button:hover {
             background-color: #0056b3;
         }
-
+        
         .section-title {
             color: #222;
             margin-bottom: 15px;
@@ -145,7 +134,7 @@
             border-bottom: 1px solid #eee;
             padding-bottom: 5px;
         }
-
+        
         /* 可折叠区域样式 */
         .collapsible-header {
             cursor: pointer;
@@ -156,7 +145,7 @@
             font-weight: bold;
             margin-top: -30px;
         }
-
+        
         .collapsible-header span {
             display: inline-block;
             width: 15px;
@@ -168,65 +157,66 @@
             margin-right: 5px;
             transition: transform 0.3s ease;
         }
-
+        
         .collapsible-content {
             overflow: hidden;
             transition: max-height 0.3s ease-out;
             max-height: 0;
         }
-
+        
         .collapsible-content.expanded {
             display: block;
-            max-height: 500px;
-            /* 根据内容调整 */
+            max-height: 500px; /* 根据内容调整 */
             animation: fadeIn 0.3s ease-in;
         }
-
+        
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-5px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
+        
         @media (max-width: 600px) {
             .radio-group label {
                 display: block;
                 margin-bottom: 10px;
             }
-
-            .input-group,
-            .radio-group,
-            .button-group {
+            
+            .input-group, .radio-group, .button-group {
                 margin-bottom: 25px;
             }
         }
-
+        
         .thumbnail {
             width: 100%;
             height: auto;
-            max-height: 120px;
-            /* 增加缩略图最大高度以适应更大的布局 */
+            max-height: 120px; /* 增加缩略图最大高度以适应更大的布局 */
             object-fit: contain;
             margin-top: 5px;
             border: 1px solid #eee;
             border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        /* 新增：产品推荐响应样式 */
+        #otherResponse {
+            width: 800px;
+            height: 1200px;
+            resize: none;
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            margin-top: 5px;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h1>API 调用示例</h1>
-
+        
         <div class="main-content">
-            <div class="form-section" style="min-width: 300px;">
+            <div class="form-section" style="width: 400px;">
                 <!-- 手机号输入 -->
                 <div class="input-group">
                     <label for="phone">请输入11位手机号：</label>
@@ -238,10 +228,10 @@
                     <div class="section-title">请选择操作类型：</div>
                     <div class="radio-group">
                         <label>
-                            <input type="radio" name="option" value="客户画像"> 客户画像 (暂未实现)
+                            <input type="radio" name="option" value="客户画像"> 客户画像
                         </label>
                         <label>
-                            <input type="radio" name="option" value="产品推荐"> 产品推荐 (暂未实现)
+                            <input type="radio" name="option" value="产品推荐"> 产品推荐
                         </label>
                         <label>
                             <input type="radio" name="option" value="auto tryon" checked> Auto Tryon
@@ -250,27 +240,103 @@
                 </div>
 
                 <!-- 图片URL输入 -->
-                <div class="input-group">
+                <div class="input-group file-upload-group">
                     <div class="section-title">请提供图片链接：</div>
                     <div class="input-group">
                         <label for="personImageUrl">Person Image URL:</label>
-                        <input type="text" id="personImageUrl"
-                            value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/eva.png">
-                        <input type="file" id="upload" class="hidden" accept="image/png,image/jpeg">
-                        <label for="upload"
-                            class="inline-block mt-3 bg-blue-500 text-white px-4 py-2 rounded text-sm cursor-pointer">
-                            选择照片
-                        </label>
+                        <label for="upload" class="inline-block mt-3 bg-blue-500 text-white px-4 py-2 rounded text-sm cursor-pointer"> 选择照片 </label>
+
+                        <input type="file" id="upload" style="display: none;">
+                        <script>
+                            // 处理图片上传预览
+                            document.getElementById('upload').addEventListener('change', function (e) {
+                                // alert('文件选择触发');
+                                const file = e.target.files[0];
+                                const filename = file.name;
+                                // alert(`upload filename:${filename}`);
+                                
+                                if (file) {
+                                    try {
+                                        // alert('开始上传文件');
+                                        upload(file).then(() => {
+                                            // alert('文件上传成功');
+                                            // 更新预览
+                                            const personImageUrlInput = document.getElementById('personImageUrl');
+                                            if (personImageUrlInput) {
+                                                const imageUrl = personImageUrlInput.value;
+                                                try {
+                                                    updateThumbnail('personThumbnail', imageUrl);
+                                                    // alert('缩略图更新成功');
+                                                } catch (thumbnailError) {
+                                                    console.error('Error updating thumbnail:', thumbnailError);
+                                                    // alert(`缩略图更新失败: ${thumbnailError.message}`);
+                                                }
+                                            }
+                                            
+                                            // alert('File uploaded successfully!');
+                                        });
+                                    } catch (error) {
+                                        console.error('Error during upload:', error);
+                                        // alert(`上传失败: ${error.message}`);
+                                    }
+                                } else {
+                                    // alert('未选择文件');
+                                }
+                            });
+
+                            /**
+                             * 上传文件到 OSS
+                             * @param {File} file - 需要上传的文件
+                             * @param {string} presignedUrl - 预签名 URL
+                             */
+                            const upload = async (file) => {
+                                // alert(`开始获取签名URL，文件名: ${file.name}`);
+                                const signresponse = await fetch(`http://8.140.56.123/api/get_post_signature_for_oss_upload?fileName=${file.name}`, {
+                                    method: "GET"
+                                });
+                                // alert(`签名URL响应状态: ${signresponse.status} ${signresponse.statusText}`);
+                                
+                                if (signresponse.ok) {
+                                    let sign = await signresponse.json();
+                                    let presignedUrl = sign.signatureUrl;
+                                    // alert(`presignurl is ${presignedUrl}`);
+                                    
+                                    const response = await fetch(presignedUrl, {
+                                        method: 'PUT',
+                                        body: file,  // 直接上传整个文件
+                                    });
+                                    // alert(`OSS上传响应状态: ${response.status} ${response.statusText}`);
+
+                                    if (!response.ok) {
+                                        // alert(`Upload failed ${response.status}`);
+                                        throw new Error(`Upload failed, status: ${response.status}`);
+                                    }
+
+                                    // 如果执行成功，把返回的URL的值更新到personImageUrl里
+                                    const personImageUrlInput = document.getElementById('personImageUrl');
+                                    if (personImageUrlInput) {
+                                        // 使用签名URL的基本路径（去掉查询参数）
+                                        const returnedUrl = presignedUrl.split('?')[0];
+                                        personImageUrlInput.value = returnedUrl;
+                                        // alert(`已更新Person Image URL为: ${returnedUrl}`);
+                                    }
+
+                                    return response;
+                                } else {
+                                    // alert('获取签名失败');
+                                    throw new Error('Sign response not OK');
+                                }
+                            };
+                        </script>
+                        <input type="text" id="personImageUrl" value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/eva.png">
                     </div>
                     <div class="input-group">
                         <label for="topGarmentUrl">Top Garment URL:</label>
-                        <input type="text" id="topGarmentUrl"
-                            value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/top.jpeg">
+                        <input type="text" id="topGarmentUrl" value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/top.jpeg">
                     </div>
                     <div class="input-group">
                         <label for="bottomGarmentUrl">Bottom Garment URL:</label>
-                        <input type="text" id="bottomGarmentUrl"
-                            value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg">
+                        <input type="text" id="bottomGarmentUrl" value="https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg">
                     </div>
                 </div>
 
@@ -314,93 +380,52 @@
                                 <label for="thirdApiResponse">新 API 返回信息：</label>
                                 <textarea id="thirdApiResponse" readonly></textarea>
                             </div>
+                            
+
                         </div>
                     </div>
                 </div>
             </div>
-
+            
             <!-- 返回图片显示 -->
             <div class="image-section">
                 <div style="width: 100%; max-width: 600px;">
                     <div class="section-title">返回的图片：</div>
-                    <img id="returnedImage" src="" alt="Returned Image"
-                        style="display:none; align-items: center; justify-content: center; width: auto; height: auto;">
-                    <div id="imageLoading"
-                        style="display: flex; align-items: center; justify-content: center; margin-top: 20px; min-height: 485px;">
+                    <img id="returnedImage" src="" alt="Returned Image" style="display:none; align-items: center; justify-content: center; width: auto; height: auto;">
+                    <div id="imageLoading" style="display: flex; align-items: center; justify-content: center; margin-top: 20px; min-height: 485px;">
                         未加载图片
                     </div>
                 </div>
-
+                
                 <!-- 新增的三个缩略图显示 -->
                 <div style="margin-left: 30px; width: 200px;">
                     <div class="section-title">输入图片预览：</div>
                     <div style="display: flex; flex-direction: column; gap: 20px;">
                         <div style="flex: 1; min-width: 0;">
                             <label style="font-size: 0.85em; color: #666;">Person Image</label>
-                            <img id="personThumbnail" class="thumbnail" src="" alt="Person Image Preview"
-                                style="display: none;">
+                            <img id="personThumbnail" class="thumbnail" src="" alt="Person Image Preview" style="display: none;">
                         </div>
                         <div style="flex: 1; min-width: 0;">
                             <label style="font-size: 0.85em; color: #666;">Top Garment</label>
-                            <img id="topThumbnail" class="thumbnail" src="" alt="Top Garment Preview"
-                                style="display: none;">
+                            <img id="topThumbnail" class="thumbnail" src="" alt="Top Garment Preview" style="display: none;">
                         </div>
                         <div style="flex: 1; min-width: 0;">
                             <label style="font-size: 0.85em; color: #666;">Bottom Garment</label>
-                            <img id="bottomThumbnail" class="thumbnail" src="" alt="Bottom Garment Preview"
-                                style="display: none;">
+                            <img id="bottomThumbnail" class="thumbnail" src="" alt="Bottom Garment Preview" style="display: none;">
                         </div>
                     </div>
                 </div>
+
+            </div>
+            <!-- 新增：产品推荐响应显示 -->
+            <div class="otherResponse" >
+                <label for="otherResponse">API调用结果：</label>
+                <textarea id="otherResponse" readonly>API调用结果</textarea>
             </div>
         </div>
     </div>
 
     <script>
-        // 处理图片上传预览
-        document.getElementById('upload').addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            const filename = file.name;
-            //   alert(`upload filename:${filename}`);
-            if (file) {
-                try {
-                    upload(file).then(() => {
-                        // alert('File uploaded successfully!');
-                    });
-                } catch (error) {
-                    console.error('Error during upload:', error);
-                    //   alert('Upload failed: ' + error.message);
-                }
-            }
-        });
-
-        /**
-             * 上传文件到 OSS
-             * @param {File} file - 需要上传的文件
-             * @param {string} presignedUrl - 预签名 URL
-             */
-        const upload = async (file) => {
-            const signresponse = await fetch(`http://8.140.56.123/api/get_post_signature_for_oss_upload?fileName=${file.name}`, { method: "GET" });
-            if (signresponse.ok) {
-                let sign = await signresponse.json();
-                let presignedUrl = sign.signatureUrl;
-                // alert(`presignurl is ${presignedUrl}`);
-                const response = await fetch(presignedUrl, {
-                    method: 'PUT',
-                    body: file,  // 直接上传整个文件
-                });
-                if (!response.ok) {
-                    //   alert(`Upload failed ${JSON.parse(response)}`);
-                    throw new Error(`Upload failed, status: ${response.status}`);
-                }
-                document.getElementById("personImageUrl").value = `https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`;
-                document.getElementById("personImageUrl").dispatchEvent(new Event('input'));
-                document.getElementById("personThumbnail").src = `https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`;
-                // alert(`https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`);
-            }
-        };
-
-
         const PROXY_URL = 'http://8.140.56.123/proxy';
 
         function isValidUrl(url) {
@@ -418,22 +443,15 @@
         }
 
         // 为可折叠区域添加点击事件
-        document.querySelector('.collapsible-header').addEventListener('click', function () {
+        document.querySelector('.collapsible-header').addEventListener('click', function() {
             const content = this.nextElementSibling;
             const arrow = this.querySelector('span');
-
+            
             // 切换展开/收起状态
             if (content.style.display === 'none') {
                 content.style.display = 'block';
                 arrow.textContent = '▼';
-                // 如果是展开状态且已经有内容，直接显示
-                if (content.querySelector('#apiResponse').value !== '') {
-                    content.classList.add('expanded');
-                }
-                // 如果是首次展开且没有内容，则触发API调用获取数据
-                else {
-                    document.getElementById('callApiBtn').click();
-                }
+                content.classList.add('expanded');
             } else {
                 content.style.display = 'none';
                 arrow.textContent = '▶';
@@ -441,18 +459,173 @@
             }
         });
 
+        // 图片预览功能
+        function updateThumbnail(imageElementId, url) {
+            const imgElement = document.getElementById(imageElementId);
+            
+            // 验证URL是否有效
+            if (!url || !isValidUrl(url)) {
+                imgElement.style.display = 'none';
+                return;
+            }
+            
+            // 设置图片源并显示图片
+            imgElement.src = url;
+            imgElement.style.display = 'block';
+        }
+        
+        // 为图片URL输入框添加input事件监听器
+        function setupUrlInputListeners() {
+            const urls = ['personImageUrl', 'topGarmentUrl', 'bottomGarmentUrl'];
+            const thumbnails = ['personThumbnail', 'topThumbnail', 'bottomThumbnail'];
+            
+            urls.forEach((urlId, index) => {
+                const inputElement = document.getElementById(urlId);
+                const thumbnailId = thumbnails[index];
+                
+                if (inputElement) {
+                    inputElement.addEventListener('input', function() {
+                        updateThumbnail(thumbnailId, this.value);
+                    });
+                    
+                    // 初始化显示
+                    updateThumbnail(thumbnailId, inputElement.value);
+                }
+            });
+        }
+        
+        // 在DOM加载完成后初始化事件监听器
+        document.addEventListener('DOMContentLoaded', function() {
+            setupUrlInputListeners();
+            
+            // 如果有现有值，触发初始加载
+            ['personImageUrl', 'topGarmentUrl', 'bottomGarmentUrl'].forEach(id => {
+                const input = document.getElementById(id);
+                if (input && input.value) {
+                    updateThumbnail(
+                        id === 'personImageUrl' ? 'personThumbnail' : 
+                        id === 'topGarmentUrl' ? 'topThumbnail' : 'bottomThumbnail',
+                        input.value
+                    );
+                }
+            });
+            
+            // // 初始化产品推荐响应文本域
+            // const otherResponse = document.getElementById('otherResponse');
+            // if (otherResponse) {
+            //     otherResponse.value = '';
+            // }
+            
+            // 初始化可见性状态
+            const selectedOption = document.querySelector('input[name="option"]:checked').value;
+            updateVisibility(selectedOption);
+        });
+        
+        // 更新可见性状态的函数
+        function updateVisibility(option) {
+            const imageSection = document.querySelector('.image-section');
+            const otherResponse = document.getElementById('otherResponse');
+            const imageUrlInput = document.querySelector('.file-upload-group');
+            
+            if (option === 'auto tryon') {
+                // 显示image-section和图片URL输入部分
+                if (imageSection) {
+                    imageSection.style.display = 'flex';
+                }
+                if (imageUrlInput) {
+                    imageUrlInput.style.display = 'block';
+                }
+                // 隐藏otherResponse
+                if (otherResponse) {
+                    otherResponse.style.display = 'none';
+                }
+            } else {
+                // 隐藏image-section和图片URL输入部分
+                if (imageSection) {
+                    imageSection.style.display = 'none';
+                }
+                if (imageUrlInput) {
+                    imageUrlInput.style.display = 'none';
+                }
+                // 显示otherResponse
+                if (otherResponse) {
+                    otherResponse.style.display = 'block';
+                }
+            }
+        }
+        
+        // 为选项添加变更事件监听器
+        document.querySelectorAll('input[name="option"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.checked) {
+                    updateVisibility(this.value);
+                }
+            });
+        });
+
+        // Add event listener for radio buttons
+        document.querySelectorAll('input[name="option"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // if (this.value === '产品推荐') {
+                //     // alert('hello!');
+                // }
+            });
+        });
+
         // 主 API 调用逻辑
         document.getElementById('callApiBtn').addEventListener('click', function () {
             disableButton('callApiBtn', true);
             disableButton('executeExtractedTextBtn', false);
 
-            // 仅清空三个文本框的内容，不再额外隐藏其他内容
-            document.getElementById('apiResponse').value = '';
-            document.getElementById('extractedText').value = '';
-            document.getElementById('thirdApiResponse').value = '';
-            document.getElementById('returnedImage').src = '';
-            document.getElementById('returnedImage').style.display = 'none';
-
+            // 获取当前选中的操作类型
+            const selectedOptionCallBtn = document.querySelector('input[name="option"]:checked').value;
+            
+            // 根据操作类型决定是否清空和隐藏图片相关元素
+            if (selectedOptionCallBtn === 'auto tryon') {
+                document.getElementById('returnedImage').src = '';
+                document.getElementById('returnedImage').style.display = 'none';
+                
+                // 清空图片预览区域
+                const thumbnails = ['personThumbnail', 'topThumbnail', 'bottomThumbnail'];
+                thumbnails.forEach(id => {
+                    const imgElement = document.getElementById(id);
+                    if (imgElement) {
+                        imgElement.src = '';
+                        imgElement.style.display = 'none';
+                    }
+                });
+                
+                // 隐藏所有加载指示器
+                const loadingIndicators = document.querySelectorAll('.thumbnail-loading');
+                loadingIndicators.forEach(el => {
+                    if (el) el.style.display = 'none';
+                });
+                
+                // 显示image-section
+                const imageSection = document.querySelector('.image-section');
+                if (imageSection) {
+                    imageSection.style.display = 'flex';
+                }
+                
+                // 隐藏otherResponse
+                const otherResponse = document.getElementById('otherResponse');
+                if (otherResponse) {
+                    otherResponse.style.display = 'none';
+                }
+            } else {
+                // 隐藏image-section
+                const imageSection = document.querySelector('.image-section');
+                if (imageSection) {
+                    imageSection.style.display = 'none';
+                }
+                
+                // 显示otherResponse
+                const otherResponse = document.getElementById('otherResponse');
+                if (otherResponse) {
+                    otherResponse.style.display = 'block';
+                }
+            }
+            
             const phone = document.getElementById('phone').value.trim();
             const selectedOption = document.querySelector('input[name="option"]:checked').value;
 
@@ -463,54 +636,205 @@
                 return;
             }
 
-            if (selectedOption !== 'auto tryon') {
-                document.getElementById('apiResponse').value = '目前仅支持 "Auto Tryon" 的 API 调用。';
-                document.getElementById('extractedText').value = '';
-                disableButton('callApiBtn', false);
-                return;
-            }
-
             const personImageUrl = document.getElementById('personImageUrl').value.trim();
             const topGarmentUrl = document.getElementById('topGarmentUrl').value.trim();
             const bottomGarmentUrl = document.getElementById('bottomGarmentUrl').value.trim();
 
-            if (!isValidUrl(personImageUrl) || !isValidUrl(topGarmentUrl) || !isValidUrl(bottomGarmentUrl)) {
-                document.getElementById('apiResponse').value = '请输入有效的 URL！';
-                document.getElementById('extractedText').value = '';
-                disableButton('callApiBtn', false);
+            // 如果选择的是产品推荐，调用产品推荐API
+            if (selectedOption === '产品推荐') {
+                if (!phone || !/^\d{11}$/.test(phone)) {
+                    document.getElementById('apiResponse').value = '请输入有效的11位手机号！';
+                    return;
+                }
+                document.getElementById('otherResponse').value = "调用产品推荐API...";
+                
+                // Start loading indicator with dots
+                let dotCount = 0;
+                const otherResponse = document.getElementById('otherResponse');
+                const loadingInterval = setInterval(() => {
+                    if (otherResponse) {
+                        // Remove previous dots and add new ones
+                        const currentValue = otherResponse.value.replace(/\.*$/, '');
+                        dotCount = (dotCount % 3) + 1; // Cycle through 1, 2, 3 dots
+                        otherResponse.value = currentValue + '.'.repeat(dotCount);
+                    }
+                }, 1000);
+                
+                
+                // 调用产品推荐API
+                fetch('https://dashscope.aliyuncs.com/api/v1/apps/a6ab469bf5114d9c84b1f7dd2b27790a/completion', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer sk-c621672d066a4b3888496de777aabf94',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        input: {
+                            prompt: `手机号码: ${phone}, 选项: 产品推荐`,
+                            biz_params: {
+                                phone: phone
+                            }
+                        },
+                        parameters: {},
+                        debug: {}
+                    })
+                })
+                .then(response => {
+                    // Stop loading indicator
+                    clearInterval(loadingInterval);                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const otherResponse = document.getElementById('otherResponse');
+                    if (otherResponse) {
+                        // Format the JSON with 2 space indentation
+                        const formattedJson = JSON.stringify(data, null, 2);
+                        otherResponse.value = formattedJson;
+                        document.getElementById('otherResponse').value = formattedJson;
+                    }
+                })
+                .catch(error => {
+                    console.error('Product recommendation error:', error);
+                    const otherResponse = document.getElementById('otherResponse');
+                    if (otherResponse) {
+                        otherResponse.value = `产品推荐API调用失败: ${error.message}`;
+                    }
+                })
+                .finally(() => disableButton('callApiBtn', false));
+                
                 return;
             }
-
-            document.getElementById('apiResponse').value = '正在调用主 API，请稍候...';
-            document.getElementById('imageLoading').textContent = '在调用主 API，请稍候...';
-
-            const requestData = {
-                input: {
-                    prompt: `手机号码: ${phone}, 选项: ${selectedOption}`,
-                    biz_params: {
-                        person_image_url: personImageUrl,
-                        top_garment_url: topGarmentUrl,
-                        bottom_garment_url: bottomGarmentUrl
+            
+            // 如果选择的是客户画像，调用客户画像API
+            if (selectedOption === '客户画像') {
+                if (!phone || !/^\d{11}$/.test(phone)) {
+                    document.getElementById('apiResponse').value = '请输入有效的11位手机号！';
+                    return;
+                }
+                document.getElementById('otherResponse').value = "调用客户画像API...";
+                
+                // Start loading indicator with dots
+                let dotCount = 0;
+                const otherResponse = document.getElementById('otherResponse');
+                const loadingInterval = setInterval(() => {
+                    if (otherResponse) {
+                        // Remove previous dots and add new ones
+                        const currentValue = otherResponse.value.replace(/\.*$/, '');
+                        dotCount = (dotCount % 3) + 1; // Cycle through 1, 2, 3 dots
+                        otherResponse.value = currentValue + '.'.repeat(dotCount);
                     }
-                },
-                parameters: {},
-                debug: {}
-            };
+                }, 1000);
+                
+                // 调用客户画像API
+                fetch('https://dashscope.aliyuncs.com/api/v1/apps/634f4252baf241158dbbf5184795cbd5/completion', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer sk-c621672d066a4b3888496de777aabf94',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        input: {
+                            prompt: `手机号码: ${phone}, 选项: 客户画像`,
+                            biz_params: {
+                                Phone: phone
+                            }
+                        },
+                        parameters: {},
+                        debug: {}
+                    })
+                })
+                .then(response => {
+                    // Stop loading indicator
+                    clearInterval(loadingInterval);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const otherResponse = document.getElementById('otherResponse');
+                    if (otherResponse) {
+                        // Format the JSON with 2 space indentation
+                        const formattedJson = JSON.stringify(data, null, 2);
+                        otherResponse.value = formattedJson;
+                        document.getElementById('otherResponse').value = formattedJson;
+                    }
+                })
+                .catch(error => {
+                    console.error('Product recommendation error:', error);
+                    const otherResponse = document.getElementById('otherResponse');
+                    if (otherResponse) {
+                        otherResponse.value = `客户画像API调用失败: ${error.message}`;
+                    }
+                })
+                .finally(() => disableButton('callApiBtn', false));
+                
+                return;
+            }            
 
-            fetch('https://dashscope.aliyuncs.com/api/v1/apps/dd71757c4bfb4e73aba58d3cfdbaaa92/completion', {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Bearer sk-c621672d066a4b3888496de777aabf94',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestData)
-            })
+            // 只有当选择的是Auto Tryon时才进行以下验证和操作
+            if (selectedOption === 'auto tryon') {
+                if (!isValidUrl(personImageUrl) || !isValidUrl(topGarmentUrl) || !isValidUrl(bottomGarmentUrl)) {
+                    document.getElementById('apiResponse').value = '请输入有效的 URL！';
+                    document.getElementById('extractedText').value = '';
+                    disableButton('callApiBtn', false);
+                    return;
+                }
+
+                document.getElementById('apiResponse').value = '正在调用主 API，请稍候...';
+                document.getElementById('imageLoading').textContent = '在调用主 API，请稍候...';
+
+                const requestData = {
+                    input: {
+                        prompt: `手机号码: ${phone}, 选项: ${selectedOption}`,
+                        biz_params: {
+                            person_image_url: personImageUrl,
+                            top_garment_url: topGarmentUrl,
+                            bottom_garment_url: bottomGarmentUrl
+                        }
+                    },
+                    parameters: {},
+                    debug: {}
+                };
+                
+                // 显示加载状态的缩略图占位符
+                const imageSections = document.querySelectorAll('.thumbnail-section');
+                imageSections.forEach(section => {
+                    const loadingIndicator = section.querySelector('.thumbnail-loading');
+                    const thumbnail = section.querySelector('img');
+                    
+                    if (loadingIndicator) {
+                        loadingIndicator.style.display = 'flex';
+                    }
+                    
+                    if (thumbnail) {
+                        thumbnail.style.display = 'none';
+                    }
+                });
+                
+                // 更新预览图片
+                updateThumbnail('personThumbnail', personImageUrl);
+                updateThumbnail('topThumbnail', topGarmentUrl);
+                updateThumbnail('bottomThumbnail', bottomGarmentUrl);
+                
+                // 修改请求地址为正确的APP ID
+                fetch('https://dashscope.aliyuncs.com/api/v1/apps/dd71757c4bfb4e73aba58d3cfdbaaa92/completion', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer sk-c621672d066a4b3888496de777aabf94',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                })
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('apiResponse').value = JSON.stringify(data, null, 2);
                     const extractedText = data.output?.text || '未找到 "text" 字段';
                     document.getElementById('extractedText').value = extractedText;
-
+                    
                     // 在获取到有效的extractedText后自动触发执行提取的文本按钮
                     if (extractedText && extractedText !== '未找到 "text" 字段') {
                         document.getElementById('executeExtractedTextBtn').click();
@@ -521,6 +845,63 @@
                     document.getElementById('extractedText').value = '';
                 })
                 .finally(() => disableButton('callApiBtn', false));
+            }
+        });
+        
+        /**
+         * 更新缩略图显示
+         * @param {string} imageElementId - 图片元素ID
+         * @param {string} url - 图片URL
+         */
+        function updateThumbnail(imageElementId, url) {
+            const imgElement = document.getElementById(imageElementId);
+            
+            // 验证URL是否有效
+            if (!url || !isValidUrl(url)) {
+                imgElement.style.display = 'none';
+                return;
+            }
+            
+            // 设置图片源并显示图片
+            imgElement.src = url;
+            imgElement.style.display = 'block';
+        }
+        
+        // 为图片URL输入框添加input事件监听器
+        function setupUrlInputListeners() {
+            const urls = ['personImageUrl', 'topGarmentUrl', 'bottomGarmentUrl'];
+            const thumbnails = ['personThumbnail', 'topThumbnail', 'bottomThumbnail'];
+            
+            urls.forEach((urlId, index) => {
+                const inputElement = document.getElementById(urlId);
+                const thumbnailId = thumbnails[index];
+                
+                if (inputElement) {
+                    inputElement.addEventListener('input', function() {
+                        updateThumbnail(thumbnailId, this.value);
+                    });
+                    
+                    // 初始化显示
+                    updateThumbnail(thumbnailId, inputElement.value);
+                }
+            });
+        }
+        
+        // 在DOM加载完成后初始化事件监听器
+        document.addEventListener('DOMContentLoaded', function() {
+            setupUrlInputListeners();
+            
+            // 如果有现有值，触发初始加载
+            ['personImageUrl', 'topGarmentUrl', 'bottomGarmentUrl'].forEach(id => {
+                const input = document.getElementById(id);
+                if (input && input.value) {
+                    updateThumbnail(
+                        id === 'personImageUrl' ? 'personThumbnail' : 
+                        id === 'topGarmentUrl' ? 'topThumbnail' : 'bottomThumbnail',
+                        input.value
+                    );
+                }
+            });
         });
 
         // 修改执行提取的文本按钮逻辑，以便在图片加载完成后恢复API按钮状态
@@ -545,27 +926,28 @@
 
             // 检查是否选中了使用代理
             const useProxy = document.getElementById('useProxyCheckbox').checked;
-
+            
             // 构建最终的URL（根据是否使用代理）
-            let finalUrl = useProxy
+            let finalUrl = useProxy 
                 ? `${PROXY_URL}?url=${encodeURIComponent(apiRequest.url)}&headers=${encodeURIComponent(JSON.stringify(apiRequest.headers))}`
                 : apiRequest.url;
-
+            
             // 新增轮询函数来处理API请求
             const pollForResult = (retryCount = 0) => {
                 if (retryCount >= 10) { // 最大重试次数，防止无限循环
                     document.getElementById('thirdApiResponse').value = '任务等待超时';
                     disableButton('executeExtractedTextBtn', false);
-
+                    
                     // 恢复API按钮状态
                     const apiButton = document.getElementById('callApiBtn');
                     apiButton.textContent = '调用 API';
                     disableButton('callApiBtn', false);
-
+                    
                     return;
                 }
 
                 document.getElementById('thirdApiResponse').value = `正在调用新 API (尝试次数: ${retryCount + 1})...\n${finalUrl}`;
+                document.getElementById('imageLoading').textContent = `正在调用新 API (尝试次数: ${retryCount + 1})...`;             
 
                 // 使用构建好的URL进行请求
                 fetch(finalUrl)
@@ -583,7 +965,7 @@
                             setTimeout(() => {
                                 pollForResult(retryCount + 1);
                             }, 3000); // 3秒后重试
-                        }
+                        } 
                         // 如果 task_status 是 SUCCEEDED 并且有 image_url，则显示图片
                         else if (data.output && data.output.task_status === 'SUCCEEDED' && data.output.image_url) {
                             const imageElement = document.getElementById('returnedImage');
@@ -591,20 +973,20 @@
                             imageElement.src = data.output.image_url;
                             imageElement.style.display = 'block';
                             loadingIndicator.style.display = 'none';
-
+                            
                             // 图片成功加载后恢复API按钮状态
                             const apiButton = document.getElementById('callApiBtn');
                             apiButton.textContent = '调用 API';
                             disableButton('callApiBtn', false);
-                        }
+                        } 
                         else {
                             // 其他情况结束加载状态
                             disableButton('executeExtractedTextBtn', false);
-
+                            
                             // 错误情况下保持空间占用以维持布局稳定
                             const loadingIndicator = document.getElementById('imageLoading');
                             loadingIndicator.style.display = 'flex';
-
+                            
                             // 添加这一行来恢复API按钮状态
                             document.getElementById('callApiBtn').textContent = '调用 API';
                         }
@@ -614,8 +996,9 @@
                         // Modified to include URL and response JSON in error message
                         const errorMessage = `新 API 调用失败: ${error.message} |  URL: ${finalUrl}`;
                         document.getElementById('thirdApiResponse').value = errorMessage;
+                        document.getElementById('imageLoading').textContent = errorMessage;                                     
                         disableButton('executeExtractedTextBtn', false);
-
+                        
                         // 出现错误时恢复API按钮状态
                         const apiButton = document.getElementById('callApiBtn');
                         apiButton.textContent = '调用 API';
@@ -630,66 +1013,32 @@
             imageElement.style.display = 'none';
             // 设置加载指示器为flex显示以维持空间占用
             loadingIndicator.style.display = 'flex';
-
+            
             pollForResult(0);
         });
 
-        // 图片预览功能
-        function updateThumbnail(imageElementId, url) {
-            const imgElement = document.getElementById(imageElementId);
+        // 添加一个函数来检查元素是否在视口内
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
 
-            // 验证URL是否有效
-            if (!url || !isValidUrl(url)) {
-                imgElement.style.display = 'none';
-                return;
+        // 添加一个函数来平滑滚动到元素
+        function scrollToElement(elementId, offset = 0) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top + window.scrollY - offset,
+                    behavior: 'smooth'
+                });
             }
-
-            // 设置图片源并显示图片
-            imgElement.src = url;
-            imgElement.style.display = 'block';
         }
-
-        // 为图片URL输入框添加input事件监听器
-        function setupUrlInputListeners() {
-            const urls = ['personImageUrl', 'topGarmentUrl', 'bottomGarmentUrl'];
-            const thumbnails = ['personThumbnail', 'topThumbnail', 'bottomThumbnail'];
-
-            urls.forEach((urlId, index) => {
-                const inputElement = document.getElementById(urlId);
-                const thumbnailId = thumbnails[index];
-
-                if (inputElement) {
-                    inputElement.addEventListener('input', function () {
-                        updateThumbnail(thumbnailId, this.value);
-                    });
-                    inputElement.addEventListener('change', function () {
-                        updateThumbnail(thumbnailId, this.value);
-                    });
-
-                    // 初始化显示
-                    updateThumbnail(thumbnailId, inputElement.value);
-                }
-            });
-        }
-
-        // 在DOM加载完成后初始化事件监听器
-        document.addEventListener('DOMContentLoaded', function () {
-            setupUrlInputListeners();
-
-            // 如果有现有值，触发初始加载
-            ['personImageUrl', 'topGarmentUrl', 'bottomGarmentUrl'].forEach(id => {
-                const input = document.getElementById(id);
-                if (input && input.value) {
-                    updateThumbnail(
-                        id === 'personImageUrl' ? 'personThumbnail' :
-                            id === 'topGarmentUrl' ? 'topThumbnail' : 'bottomThumbnail',
-                        input.value
-                    );
-                }
-            });
-        });
 
     </script>
 </body>
-
 </html>

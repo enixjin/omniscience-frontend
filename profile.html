@@ -36,10 +36,10 @@
       <!-- 搜索区 -->
       <div class="bg-white rounded-lg p-4 mb-4 card-shadow">
         <div class="relative mb-3">
-          <input type="tel" placeholder="输入客户手机号" 
+          <input type="tel" id="phoneInput" placeholder="输入客户手机号" 
             class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             maxlength="11" pattern="[0-9]{11}">
-          <button class="absolute right-2 top-2 bg-blue-500 text-white p-1 rounded-lg">
+          <button id="searchBtn" class="absolute right-2 top-2 bg-blue-500 text-white p-1 rounded-lg">
             <i class="fas fa-search"></i>
           </button>
         </div>
@@ -188,6 +188,78 @@
   </div>
 
   <script>
+    // 读取sessionStorage中的手机号并添加API调用功能
+    document.addEventListener('DOMContentLoaded', function() {
+      const phoneInput = document.getElementById('phoneInput');
+      const searchBtn = document.getElementById('searchBtn');
+      
+      // 初始化手机号
+      if (phoneInput) {
+        const phone = sessionStorage.getItem('phone');
+        if (phone) {
+          phoneInput.value = phone;
+        }
+      }
+      
+      // 添加搜索按钮点击事件
+      if (searchBtn && phoneInput) {
+        searchBtn.addEventListener('click', function() {
+          const phoneValue = phoneInput.value.trim();
+          
+          // 验证手机号格式
+          if (!/^[0-9]{11}$/.test(phoneValue)) {
+            alert('请输入有效的11位手机号码！');
+            return;
+          }
+          
+          // 显示加载状态
+          searchBtn.disabled = true;
+          searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+          
+          // 调用客户画像API
+          fetch('https://dashscope.aliyuncs.com/api/v1/apps/634f4252baf241158dbbf5184795cbd5/completion', {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer sk-c621672d066a4b3888496de777aabf94',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              input: {
+                prompt: `手机号码: ${phoneValue}, 选项: 客户画像`,
+                biz_params: {
+                  Phone: phoneValue
+                }
+              },
+              parameters: {},
+              debug: {}
+            })
+          })
+          .then(response => {
+            // 恢复按钮状态
+            searchBtn.disabled = false;
+            searchBtn.innerHTML = '<i class="fas fa-search"></i>';
+            
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            // 格式化JSON并显示alert
+            const formattedJson = JSON.stringify(data, null, 2);
+            alert(`客户画像API返回信息:\n\n${formattedJson}`);
+          })
+          .catch(error => {
+            // 错误处理
+            searchBtn.disabled = false;
+            searchBtn.innerHTML = '<i class="fas fa-search"></i>';
+            console.error('Profile API error:', error);
+            alert(`客户画像API调用失败: ${error.message}`);
+          });
+        });
+      }
+    });
+
     // 处理详情折叠
     document.querySelectorAll('details').forEach(detail => {
       detail.querySelector('summary').addEventListener('click', function() {

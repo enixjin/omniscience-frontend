@@ -21,6 +21,24 @@
       <p class="text-lg opacity-90">您的智能助手</p>
     </div>
 
+    <!-- 修改后的手机号输入区域 -->
+    <div class="w-full max-w-md space-y-4 mb-8">
+      <div class="bg-white bg-opacity-10 p-4 rounded-xl backdrop-blur-sm">
+        <div class="flex flex-col space-y-3">
+          <label for="phoneInput" class="text-left font-medium">请输入手机号：</label>
+          <input type="text" id="phoneInput" maxlength="11"
+            class="w-full p-2 rounded-lg border-none focus:ring-2 focus:ring-blue-500 text-black"
+            placeholder="11位数字">
+          <!-- 新增提示信息显示区域 -->
+          <div id="phoneMessage" class="text-sm mt-1 min-h-[1.2em]"></div>
+          <button id="savePhoneBtn" 
+            class="mt-2 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition duration-200">
+            确认手机号
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="w-full max-w-md space-y-6 mb-12">
       <div class="bg-white bg-opacity-10 p-4 rounded-xl backdrop-blur-sm" onclick="location.href='http://8.140.56.123/profile.html'" >
         <div class="flex items-center space-x-3">
@@ -63,6 +81,42 @@
       开始对话
     </button -->
   </div>
+  <script>
+    // 处理手机号输入
+    document.addEventListener('DOMContentLoaded', function() {
+      const phoneInput = document.getElementById('phoneInput');
+      const saveBtn = document.getElementById('savePhoneBtn');
+      const phoneMessage = document.getElementById('phoneMessage');
+      
+      if (saveBtn) {
+        saveBtn.addEventListener('click', function() {
+          const phoneValue = phoneInput.value.trim();
+          
+          // 验证手机号格式
+          if (/^\d{11}$/.test(phoneValue)) {
+            // 存储到sessionStorage
+            sessionStorage.setItem('phone', phoneValue);
+            
+            // 显示成功提示（红色文字）
+            phoneMessage.textContent = '校验成功！';
+            phoneMessage.className = 'text-sm mt-1 min-h-[1.2em] text-red-500';
+            
+            // 2秒后自动隐藏提示
+            setTimeout(() => {
+              phoneMessage.textContent = '';
+            }, 2000);
+          } else {
+            // 错误提示保持alert
+            phoneMessage.textContent = '请输入有效的11位手机号码！';
+            phoneMessage.className = 'text-sm mt-1 min-h-[1.2em] text-red-500';
+            setTimeout(() => {
+              phoneMessage.textContent = '';
+            }, 2000);
+          }
+        });
+      }
+    });
+  </script>  
 </body>
 </html>
   

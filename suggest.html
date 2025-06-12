@@ -170,6 +170,74 @@
   </div>
 
   <script>
+    // 获取输入框和按钮元素
+    const inputElement = document.querySelector('.w-full.p-3.border.rounded-lg');
+    const buttonElement = document.querySelector('.absolute.right-2.top-2.bg-blue-500');
+
+    // 添加点击事件监听器
+    if (buttonElement) {
+      buttonElement.addEventListener('click', function () {
+        // 优先读取sessionStorage中的手机号
+        const sessionPhone = sessionStorage.getItem('phone');
+        
+        // 获取输入框的值作为备用
+        const inputValue = inputElement.value.trim();
+        
+        // 验证手机号格式 - 优先使用sessionStorage中的值
+        const phoneValue = sessionPhone && /^\d{11}$/.test(sessionPhone) 
+          ? sessionPhone 
+          : inputValue;
+        
+        if (!/^[0-9]{11}$/.test(phoneValue)) {
+          alert('请输入有效的11位手机号码！');
+          return;
+        }
+        
+        // 显示加载状态
+        document.getElementById('loading').classList.remove('hidden');
+        
+        // 构造API请求 - 使用sessionStorage中的手机号优先
+        fetch('https://dashscope.aliyuncs.com/api/v1/apps/a6ab469bf5114d9c84b1f7dd2b27790a/completion', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer sk-c621672d066a4b3888496de777aabf94',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            input: {
+              prompt: `搭配需求: ${inputValue}, 选项: 产品推荐`,
+              biz_params: {
+                // 使用sessionStorage中的手机号优先
+                phone: phoneValue
+              }
+            },
+            parameters: {},
+            debug: {}
+          })
+        })
+        .then(response => {
+          // 隐藏加载状态
+          document.getElementById('loading').classList.add('hidden');
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          // 格式化JSON数据并显示alert
+          const formattedJson = JSON.stringify(data, null, 2);
+          alert(`API 返回信息:\n\n${formattedJson}`);
+        })
+        .catch(error => {
+          // 错误处理
+          document.getElementById('loading').classList.add('hidden');
+          console.error('Product recommendation error:', error);
+          alert(`API调用失败: ${error.message}`);
+        });
+      });
+    }
+
     // 模拟加载
     document.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', function() {

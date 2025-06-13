@@ -181,7 +181,7 @@
           //alert(`Upload failed ${JSON.parse(response)}`);
           throw new Error(`Upload failed, status: ${response.status}`);
         }
-        document.getElementById('original-image').src = 'https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}';
+        document.getElementById('original-image').src = `https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`;
         //alert(`https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`);
       }
     };

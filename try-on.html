@@ -149,13 +149,15 @@
     document.getElementById('upload').addEventListener('change', function (e) {
       const file = e.target.files[0];
       const filename = file.name;
-      alert(`upload filename:${filename}`);
+      //alert(`upload filename:${filename}`);
       if (file) {
         try {
-          upload(file).then(() => { alert('File uploaded successfully!'); })
+          upload(file).then(() => {
+            //alert('File uploaded successfully!');
+          })
         } catch (error) {
           console.error('Error during upload:', error);
-          alert('Upload failed: ' + error.message);
+          //alert('Upload failed: ' + error.message);
         }
       }
     });
@@ -170,16 +172,17 @@
       if (signresponse.ok) {
         let sign = await signresponse.json();
         let presignedUrl = sign.signatureUrl;
-        alert(`presignurl is ${presignedUrl}`);
+        //alert(`presignurl is ${presignedUrl}`);
         const response = await fetch(presignedUrl, {
           method: 'PUT',
           body: file,  // 直接上传整个文件
         });
         if (!response.ok) {
-          alert(`Upload failed ${JSON.parse(response)}`);
+          //alert(`Upload failed ${JSON.parse(response)}`);
           throw new Error(`Upload failed, status: ${response.status}`);
         }
-        alert(`https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`);
+        document.getElementById('original-image').src = 'https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}';
+        //alert(`https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`);
       }
     };
   </script>

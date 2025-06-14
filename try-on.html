@@ -51,7 +51,7 @@
       <!-- 上传区域 -->
       <div class="bg-white rounded-lg p-4 mb-4 card-shadow">
         <h2 class="text-lg font-semibold mb-3">上传照片</h2>
-        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+        <div id="chose-image" class="border-2 border-dashed border-gray-300 rounded-lg p-2 text-center">
           <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
           <p class="text-sm text-gray-500 mb-2">拖放照片到此处或点击上传</p>
           <p class="text-xs text-gray-400">支持PNG/JPEG格式，大小≤10MB</p>
@@ -60,6 +60,9 @@
             选择照片
           </label>
         </div>
+        <div id="reupload-image" class="border-2 border-dashed border-gray-300 rounded-lg p-2 text-center">
+          <button id="reupload" class="text-sm text-blue-500">重新上传原图</button>
+        </div>
       </div>
 
       <!-- 试衣效果 -->
@@ -67,6 +70,22 @@
         <div class="flex justify-between items-center mb-3">
           <h2 class="text-lg font-semibold">试衣效果</h2>
           <button class="text-sm text-blue-500">更换服装</button>
+        </div>
+        <!-- 推荐搭配 -->
+        <div class="bg-white rounded-lg p-4 card-shadow">
+          <h2 class="text-lg font-semibold mb-3">推荐搭配</h2>
+          <div class="grid grid-cols-3 gap-2">
+            <div class="text-center cursor-pointer">
+              <img id="top_url" src="https://groupd-image.oss-cn-shanghai.aliyuncs.com/top.jpeg"
+                class="w-full h-20 object-cover rounded mb-1">
+              <p class="text-xs">上装</p>
+            </div>
+            <div class="text-center cursor-pointer">
+              <img id="buttom_url" src="https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg"
+                class="w-full h-20 object-cover rounded mb-1">
+              <p class="text-xs">裤子</p>
+            </div>
+          </div>
         </div>
 
         <!-- 对比效果 -->
@@ -101,22 +120,6 @@
         </div>
       </div>
 
-      <!-- 推荐搭配 -->
-      <div class="bg-white rounded-lg p-4 card-shadow">
-        <h2 class="text-lg font-semibold mb-3">推荐搭配</h2>
-        <div class="grid grid-cols-3 gap-2">
-          <div class="text-center cursor-pointer">
-            <img src="https://groupd-image.oss-cn-shanghai.aliyuncs.com/top.jpeg"
-              class="w-full h-20 object-cover rounded mb-1">
-            <p class="text-xs">上装</p>
-          </div>
-          <div class="text-center cursor-pointer">
-            <img src="https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg"
-              class="w-full h-20 object-cover rounded mb-1">
-            <p class="text-xs">裤子</p>
-          </div>
-        </div>
-      </div>
     </main>
 
     <!-- 底部导航 -->
@@ -137,10 +140,31 @@
   </div>
 
   <script>
+    if (sessionStorage.getItem("top_url")) {
+      document.getElementById('top_url').src = sessionStorage.getItem("top_url");
+    }
+    if (sessionStorage.getItem("buttom_url")) {
+      document.getElementById('buttom_url').src = sessionStorage.getItem("buttom_url");
+    }
+    if (localStorage.getItem("original-image")) {
+      document.getElementById('original-image').src = localStorage.getItem("original-image");
+      document.getElementById('chose-image').hidden = true;
+      document.getElementById('reupload-image').hidden = false;
+    }else{
+      document.getElementById('reupload-image').hidden = true;
+    }
+
+    document.getElementById('reupload').addEventListener('click', function () {
+      document.getElementById('chose-image').hidden = false;
+      document.getElementById('reupload-image').hidden = true;
+    });
+
     // 处理图片上传预览
     document.getElementById('upload').addEventListener('change', function (e) {
       const file = e.target.files[0];
       const filename = file.name;
+      document.getElementById('original-image').src = "https://groupd-image.oss-cn-shanghai.aliyuncs.com/loading.png";
+      document.getElementById('try-on-image').src = "https://groupd-image.oss-cn-shanghai.aliyuncs.com/loading.png";
       //alert(`upload filename:${filename}`);
       if (file) {
         try {
@@ -155,14 +179,14 @@
     });
 
     const tryon = async (personImageUrl) => {
-      document.getElementById('try-on-image').src = '';
+      // document.getElementById('try-on-image').src = '';
       const requestData = {
         input: {
           prompt: `手机号码: 13912345601, 选项: auto tryon`,
           biz_params: {
             person_image_url: personImageUrl,
-            top_garment_url: "https://groupd-image.oss-cn-shanghai.aliyuncs.com/top.jpeg",
-            bottom_garment_url: "https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg"
+            top_garment_url: sessionStorage.getItem("top_url") ? sessionStorage.getItem("top_url") : "https://groupd-image.oss-cn-shanghai.aliyuncs.com/top.jpeg",
+            bottom_garment_url: sessionStorage.getItem("buttom_url") ? sessionStorage.getItem("buttom_url") : "https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg"
           }
         },
         parameters: {},
@@ -260,6 +284,9 @@
           throw new Error(`Upload failed, status: ${response.status}`);
         }
         document.getElementById('original-image').src = `https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`;
+        localStorage.setItem('original-image', `https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`);
+        document.getElementById('chose-image').hidden = true;
+        document.getElementById('reupload-image').hidden = false;
         return `https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`;
         //alert(`https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`);
       }

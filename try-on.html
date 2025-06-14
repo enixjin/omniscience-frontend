@@ -81,7 +81,7 @@
               <p class="text-xs">上装</p>
             </div>
             <div class="text-center cursor-pointer">
-              <img id="buttom_url" src="https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg"
+              <img id="bottom_url" src="https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg"
                 class="w-full h-20 object-cover rounded mb-1">
               <p class="text-xs">裤子</p>
             </div>
@@ -143,8 +143,8 @@
     if (sessionStorage.getItem("top_url")) {
       document.getElementById('top_url').src = sessionStorage.getItem("top_url");
     }
-    if (sessionStorage.getItem("buttom_url")) {
-      document.getElementById('buttom_url').src = sessionStorage.getItem("buttom_url");
+    if (sessionStorage.getItem("bottom_url")) {
+      document.getElementById('bottom_url').src = sessionStorage.getItem("bottom_url");
     }
     if (localStorage.getItem("original-image")) {
       document.getElementById('original-image').src = localStorage.getItem("original-image");
@@ -186,7 +186,7 @@
           biz_params: {
             person_image_url: personImageUrl,
             top_garment_url: sessionStorage.getItem("top_url") ? sessionStorage.getItem("top_url") : "https://groupd-image.oss-cn-shanghai.aliyuncs.com/top.jpeg",
-            bottom_garment_url: sessionStorage.getItem("buttom_url") ? sessionStorage.getItem("buttom_url") : "https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg"
+            bottom_garment_url: sessionStorage.getItem("bottom_url") ? sessionStorage.getItem("bottom_url") : "https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg"
           }
         },
         parameters: {},

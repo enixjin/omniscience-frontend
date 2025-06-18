@@ -188,35 +188,29 @@
   </div>
 
   <script>
-    // 读取sessionStorage中的手机号并添加API调用功能
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const phoneInput = document.getElementById('phoneInput');
       const searchBtn = document.getElementById('searchBtn');
-      
-      // 初始化手机号
+
       if (phoneInput) {
         const phone = sessionStorage.getItem('phone');
         if (phone) {
           phoneInput.value = phone;
         }
       }
-      
-      // 添加搜索按钮点击事件
+
       if (searchBtn && phoneInput) {
-        searchBtn.addEventListener('click', function() {
+        searchBtn.addEventListener('click', function () {
           const phoneValue = phoneInput.value.trim();
-          
-          // 验证手机号格式
+
           if (!/^[0-9]{11}$/.test(phoneValue)) {
             alert('请输入有效的11位手机号码！');
             return;
           }
-          
-          // 显示加载状态
+
           searchBtn.disabled = true;
           searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-          
-          // 调用客户画像API
+
           fetch('https://dashscope.aliyuncs.com/api/v1/apps/634f4252baf241158dbbf5184795cbd5/completion', {
             method: 'POST',
             headers: {
@@ -234,44 +228,108 @@
               debug: {}
             })
           })
-          .then(response => {
-            // 恢复按钮状态
+          .then(async(response) => {
             searchBtn.disabled = false;
             searchBtn.innerHTML = '<i class="fas fa-search"></i>';
             
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
-            return response.json();
+            return JSON.parse((await response.json()).output.text);
           })
           .then(data => {
-            // 格式化JSON并显示alert
-            const formattedJson = JSON.stringify(data, null, 2);
-            alert(`客户画像API返回信息:\n\n${formattedJson}`);
+            const customerData = data.Customer;
+            const chatData = data.Chat;
+            const orderData = data.Order;
+            const productData = data.Product;
+
+            // Update Customer Info Section
+            document.querySelector('.flex.items-center.mb-3 h2').innerText = `${customerData.name}`;
+            document.querySelector('.flex.items-center.mb-3 p').innerText = `${customerData.phone.slice(0, 3)}****${customerData.phone.slice(-4)}`;
+
+            // Generate Interest Tags from Chat Data
+            const tagContainer = document.querySelector('.flex.flex-wrap.gap-2');
+            tagContainer.innerHTML = '';
+            const uniqueTags = new Set();
+            chatData.forEach(chat => {
+              const message = chat.message.toLowerCase();
+              if (message.includes('西服')) uniqueTags.add('关注西服版型');
+              if (message.includes('促销')) uniqueTags.add('询问节日促销');
+              if (message.includes('深色')) uniqueTags.add('偏好深色系');
+              if (message.includes('商务休闲')) uniqueTags.add('商务休闲风格');
+            });
+            uniqueTags.forEach(tag => {
+              const tagElement = document.createElement('span');
+              tagElement.className = 'bg-blue-500 text-white px-3 py-1 rounded-full text-sm';
+              tagElement.innerText = tag;
+              tagContainer.appendChild(tagElement);
+            });
+
+            // Populate Recent Chat Records
+            const chatRecords = document.querySelector('.space-y-3');
+            chatRecords.innerHTML = '';
+            chatData.slice(0, 3).forEach(chat => { // Show latest 3 chats
+              const chatDiv = document.createElement('div');
+              chatDiv.className = 'border-l-2 border-blue-500 pl-3';
+              chatDiv.innerHTML = `
+                <p class="text-sm font-medium">${new Date(chat.timestamp).toLocaleString()}</p>
+                <p class="text-gray-600">"${chat.message}"</p>
+              `;
+              chatRecords.appendChild(chatDiv);
+            });
+
+            // Populate Purchase History
+            const purchaseHistory = document.querySelector('.bg-white.rounded-lg.p-4.card-shadow');
+            const detailsSections = purchaseHistory.querySelectorAll('details');
+            detailsSections.forEach(details => details.remove());
+            orderData.forEach(order => {
+              const quarter = getQuarter(new Date(order.orderDate));
+              let quarterSection = purchaseHistory.querySelector(`details[quarter="${quarter}"]`);
+              if (!quarterSection) {
+                quarterSection = document.createElement('details');
+                quarterSection.setAttribute('quarter', quarter);
+                quarterSection.className = 'mb-3';
+                quarterSection.innerHTML = `
+                  <summary class="font-medium flex items-center justify-between cursor-pointer">
+                    <span>${quarter}</span>
+                    <i class="fas fa-chevron-down text-sm transform transition-transform duration-200"></i>
+                  </summary>
+                  <div class="mt-2 space-y-2"></div>
+                `;
+                purchaseHistory.appendChild(quarterSection);
+              }
+              const product = productData.find(p => p.price === order.totalAmount);
+              const productDiv = document.createElement('div');
+              productDiv.className = 'flex items-center p-2 hover:bg-gray-50 rounded';
+              productDiv.innerHTML = `
+                <img src="${product.imageUrl}" class="w-12 h-12 object-cover rounded mr-3">
+                <div class="flex-1">
+                  <p class="text-sm font-medium">${product.productName}</p>
+                  <p class="text-xs text-gray-500">${new Date(order.orderDate).toLocaleDateString()} ¥${order.totalAmount}</p>
+                </div>
+                <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded">重复购买</span>
+              `;
+              quarterSection.querySelector('.space-y-2').appendChild(productDiv);
+            });
           })
           .catch(error => {
-            // 错误处理
             searchBtn.disabled = false;
             searchBtn.innerHTML = '<i class="fas fa-search"></i>';
             console.error('Profile API error:', error);
             alert(`客户画像API调用失败: ${error.message}`);
           });
-        });
-      }
-    });
-
-    // 处理详情折叠
-    document.querySelectorAll('details').forEach(detail => {
-      detail.querySelector('summary').addEventListener('click', function() {
-        const icon = this.querySelector('i');
-        if(detail.open) {
-          icon.classList.add('rotate-180');
-        } else {
-          icon.classList.remove('rotate-180');
-        }
       });
-    });
-  </script>
+    }
+
+    // Helper function to determine quarter
+    function getQuarter(date) {
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      const quarter = Math.ceil(month / 3);
+      return `${year}年 第${quarter}季度`;
+    }
+  });
+</script>
 </body>
 </html>
   

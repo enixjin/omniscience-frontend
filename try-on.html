@@ -63,7 +63,7 @@
         <div id="reupload-image" class="border-2 border-dashed border-gray-300 rounded-lg p-2 text-center">
           <button id="reupload" class="text-sm text-blue-500">重新上传原图</button>
         </div>
-        <div id="reupload-image" class="border-2 border-dashed border-gray-300 rounded-lg p-2 text-center">
+        <div id="regen" class="border-2 border-dashed border-gray-300 rounded-lg p-2 text-center">
           <button id="gen" class="text-sm text-blue-500">生成试穿</button>
         </div>
       </div>
@@ -152,13 +152,16 @@
       document.getElementById('original-image').src = localStorage.getItem("original-image");
       document.getElementById('chose-image').hidden = true;
       document.getElementById('reupload-image').hidden = false;
+      document.getElementById('regen').hidden = false;
     }else{
       document.getElementById('reupload-image').hidden = true;
+      document.getElementById('regen').hidden = true;
     }
 
     document.getElementById('reupload').addEventListener('click', function () {
       document.getElementById('chose-image').hidden = false;
       document.getElementById('reupload-image').hidden = true;
+      document.getElementById('regen').hidden = true;
     });
 
     // 处理图片上传预览

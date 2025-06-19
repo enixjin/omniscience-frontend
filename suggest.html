@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,33 +13,43 @@
       --background: #F5F7FB;
       --accent: #FF7A45;
     }
-        
+
     /* 通用选中样式 */
-    .top-selection, .bottom-selection {
+    .top-selection,
+    .bottom-selection {
       cursor: pointer;
       transition: all 0.2s ease;
     }
-        
+
     /* 选中时的视觉反馈 */
     .selected-image {
       border: 2px solid #3b82f6;
       box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
     }
-        
+
     /* 卡片阴影效果 */
     .card-shadow {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-        
+
     .ripple {
       animation: ripple 1.2s infinite ease-in-out;
     }
+
     @keyframes ripple {
-      0% { transform: scale(0.8); opacity: 1; }
-      100% { transform: scale(1.2); opacity: 0; }
+      0% {
+        transform: scale(0.8);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.2);
+        opacity: 0;
+      }
     }
   </style>
 </head>
+
 <body class="bg-gray-50 font-sans">
   <!-- 主页面容器 -->
   <div class="max-w-md mx-auto min-h-screen flex flex-col bg-gray-100">
@@ -60,10 +70,10 @@
           <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">商务</span>
           <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">深色系</span>
           <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">简约</span>
-          
+
         </div>
         <div class="relative">
-          <input type="text" placeholder="描述您的搭配需求..." 
+          <input type="text" placeholder="描述您的搭配需求..."
             class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
           <button class="absolute right-2 top-2 bg-blue-500 text-white p-1 rounded-lg" onclick="resetSelection()">
             <i class="fas fa-paper-plane"></i>
@@ -85,7 +95,8 @@
 
             <div class="grid grid-cols-3 gap-2">
               <div class="text-center w-full">
-                <img id="top-image-1" alt="top" src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                <img id="top-image-1" alt="top"
+                  src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
                   class="w-full h-[400px] object-cover rounded top-selection">
                 <p id="top-name-1" class="text-xs mt-1">西装外套</p>
                 <p id="top-price-1" class="text-gray-500 text-xs mt-0.5">￥100.00</p>
@@ -94,7 +105,8 @@
               </div>
 
               <div class="text-center w-full">
-                <img id="top-image-2" alt="top" src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                <img id="top-image-2" alt="top"
+                  src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
                   class="w-full h-[400px] object-cover rounded top-selection">
                 <p id="top-name-2" class="text-xs mt-1">西装外套</p>
                 <p id="top-price-2" class="text-gray-500 text-xs mt-0.5">￥100.00</p>
@@ -103,57 +115,61 @@
               </div>
 
               <div class="text-center w-full">
-                <img id="top-image-3" alt="top" src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                <img id="top-image-3" alt="top"
+                  src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
                   class="w-full h-[400px] object-cover rounded top-selection">
                 <p id="top-name-3" class="text-xs mt-1">西装外套</p>
                 <p id="top-price-3" class="text-gray-500 text-xs mt-0.5">￥100.00</p>
                 <p id="top-sku-3" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
                 <p id="top-reason-3" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
               </div>
-          </div>
-        </div>
-
-        <!-- 推荐卡片2 -->
-        <div class="bg-white rounded-lg overflow-hidden mb-4 card-shadow">
-
-          <div class="p-4">
-            <div class="grid grid-cols-3 gap-2">
-
-              <div class="text-center w-full">
-                <img id="bottom-image-1" alt="bottom" src="https://images.unsplash.com/photo-1640336437301-8368b53861ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                  class="w-full h-[400px] object-cover rounded bottom-selection">
-                <p id="bottom-name-1" class="text-xs mt-1">修身牛仔裤</p>
-                <p id="bottom-price-1" class="text-gray-500 text-xs mt-0.5">￥100.00</p>
-                <p id="bottom-sku-1" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
-                <p id="bottom-reason-1" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
-              </div>
-
-              <div class="text-center w-full">
-                <img id="bottom-image-2" alt="bottom" src="https://images.unsplash.com/photo-1640336437301-8368b53861ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                  class="w-full h-[400px] object-cover rounded bottom-selection">
-                <p id="bottom-name-2" class="text-xs mt-1">修身牛仔裤</p>
-                <p id="bottom-price-2" class="text-gray-500 text-xs mt-0.5">￥100.00</p>
-                <p id="bottom-sku-2" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
-                <p id="bottom-reason-2" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
-              </div>
-
-              <div class="text-center w-full">
-                <img id="bottom-image-3" alt="bottom" src="https://images.unsplash.com/photo-1640336437301-8368b53861ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                  class="w-full h-[400px] object-cover rounded bottom-selection">
-                <p id="bottom-name-3" class="text-xs mt-1">修身牛仔裤</p>
-                <p id="bottom-price-3" class="text-gray-500 text-xs mt-0.5">￥100.00</p>
-                <p id="bottom-sku-3" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
-                <p id="bottom-reason-3" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
-              </div>              
-
-            </div>
-            <div class="flex justify-between mt-3">
-              
-              <button class="bg-blue-500 text-white px-3 py-1 rounded text-sm" onclick="openTryOn()">试穿效果</button>
             </div>
           </div>
+
+          <!-- 推荐卡片2 -->
+          <div class="bg-white rounded-lg overflow-hidden mb-4 card-shadow">
+
+            <div class="p-4">
+              <div class="grid grid-cols-3 gap-2">
+
+                <div class="text-center w-full">
+                  <img id="bottom-image-1" alt="bottom"
+                    src="https://images.unsplash.com/photo-1640336437301-8368b53861ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-[400px] object-cover rounded bottom-selection">
+                  <p id="bottom-name-1" class="text-xs mt-1">修身牛仔裤</p>
+                  <p id="bottom-price-1" class="text-gray-500 text-xs mt-0.5">￥100.00</p>
+                  <p id="bottom-sku-1" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
+                  <p id="bottom-reason-1" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
+                </div>
+
+                <div class="text-center w-full">
+                  <img id="bottom-image-2" alt="bottom"
+                    src="https://images.unsplash.com/photo-1640336437301-8368b53861ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-[400px] object-cover rounded bottom-selection">
+                  <p id="bottom-name-2" class="text-xs mt-1">修身牛仔裤</p>
+                  <p id="bottom-price-2" class="text-gray-500 text-xs mt-0.5">￥100.00</p>
+                  <p id="bottom-sku-2" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
+                  <p id="bottom-reason-2" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
+                </div>
+
+                <div class="text-center w-full">
+                  <img id="bottom-image-3" alt="bottom"
+                    src="https://images.unsplash.com/photo-1640336437301-8368b53861ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-[400px] object-cover rounded bottom-selection">
+                  <p id="bottom-name-3" class="text-xs mt-1">修身牛仔裤</p>
+                  <p id="bottom-price-3" class="text-gray-500 text-xs mt-0.5">￥100.00</p>
+                  <p id="bottom-sku-3" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
+                  <p id="bottom-reason-3" class="text-gray-400 text-xs mt-0.5">BOSS001</p>
+                </div>
+
+              </div>
+              <div class="flex justify-between mt-3">
+
+                <button class="bg-blue-500 text-white px-3 py-1 rounded text-sm" onclick="openTryOn()">试穿效果</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
     </main>
 
     <!-- 底部导航 -->
@@ -183,7 +199,8 @@
   </div>
 
   <!-- 错误提示 -->
-  <div id="toast" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hidden">
+  <div id="toast"
+    class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hidden">
     操作失败，请重试
   </div>
 
@@ -201,7 +218,7 @@
       sessionStorage.setItem('top_url', '');
       sessionStorage.setItem('bottom_url', '');
       // 初始化描述自动填充功能
-      initDescriptionAutoFill();
+      // initDescriptionAutoFill();
       // 初始化推荐理由自动填充功能
       initPromptAutoFill();
       // 初始化图片选择功能
@@ -223,23 +240,23 @@
       buttonElement.addEventListener('click', function () {
         // 优先读取sessionStorage中的手机号
         const sessionPhone = sessionStorage.getItem('phone');
-        
+
         // 获取输入框的值作为备用
         const inputValue = inputElement.value.trim();
-        
+
         // 验证手机号格式 - 优先使用sessionStorage中的值
-        const phoneValue = sessionPhone && /^\d{11}$/.test(sessionPhone) 
-          ? sessionPhone 
+        const phoneValue = sessionPhone && /^\d{11}$/.test(sessionPhone)
+          ? sessionPhone
           : inputValue;
-        
+
         if (!/^[0-9]{11}$/.test(phoneValue)) {
           alert('请输入有效的11位手机号码！');
           return;
         }
-        
+
         // 显示加载状态
         document.getElementById('loading').classList.remove('hidden');
-        
+
         // 构造API请求 - 使用sessionStorage中的手机号优先
         fetch('https://dashscope.aliyuncs.com/api/v1/apps/a6ab469bf5114d9c84b1f7dd2b27790a/completion', {
           method: 'POST',
@@ -259,129 +276,129 @@
             debug: {}
           })
         })
-        .then(response => {
-          // 隐藏加载状态
-          document.getElementById('loading').classList.add('hidden');
-          
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          // 提取LLM返回的JSON内容
-          let formattedJson = '';
-          try {
-            // 从text字段提取并解析JSON
-            const llmContent = JSON.parse(data.output.text).llm;
-            // 移除代码块标记
-            formattedJson = llmContent.replace(/^```json\n|```$/g, '');
-            
-            // 解析JSON数据
-            const jsonData = JSON.parse(formattedJson);
-            
-            // 验证关键字段
-            const requiredFields = [
-              'top-sku-1', 'top-name-1', 'top-price-1', 'top-image-1', 'top-reason-1',
-              'top-sku-2', 'top-name-2', 'top-price-2', 'top-image-2', 'top-reason-2',
-              'top-sku-3', 'top-name-3', 'top-price-3', 'top-image-3', 'top-reason-3',
-              'bottom-sku-1', 'bottom-name-1', 'bottom-price-1', 'bottom-image-1', 'bottom-reason-1',
-              'bottom-sku-2', 'bottom-name-2', 'bottom-price-2', 'bottom-image-2', 'bottom-reason-2',
-              'bottom-sku-3', 'bottom-name-3', 'bottom-price-3', 'bottom-image-3', 'bottom-reason-3'
-            ];
-            
-            const missingFields = requiredFields.filter(key => !(key in jsonData));
-            if (missingFields.length > 0) {
-              throw new Error(`缺失必要字段: ${missingFields.join(', ')}`);
+          .then(response => {
+            // 隐藏加载状态
+            document.getElementById('loading').classList.add('hidden');
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
             }
-            
-            // 更新DOM元素（保持原有逻辑不变）
-            Object.entries(jsonData).forEach(([key, value]) => {
-              const element = document.getElementById(key);
-              if (element) {
-                // 图片字段更新src属性
-                if (key.startsWith('top-image-') || key.startsWith('bottom-image-')) {
-                  element.src = value.slice(0, -3) + '350';
-                  // 为已加载图片初始化选中功能
-                  if (!element.classList.contains('selection-initialized')) {
-                    const prefix = key.startsWith('top') ? 'top' : 'bottom';
-                    initImageSelection(`${prefix}-image-`, `${prefix}-selection`);
-                    element.classList.add('selection-initialized');
-                  }
-                } 
-                // 价格字段格式化
-                else if (key.startsWith('top-price-') || key.startsWith('bottom-price-')) {
-                  element.textContent = `￥${parseFloat(value).toFixed(2)}`;
-                }
-                // SKU字段特殊处理
-                else if (key.startsWith('top-sku-') || key.startsWith('bottom-sku-')) {
-                  element.textContent = value.startsWith('BOSS') ? value : `BOSS${value}`;
-                }
-                // 其他文本字段直接更新内容
-                else {
-                  element.textContent = value;
-                }
+            return response.json();
+          })
+          .then(data => {
+            // 提取LLM返回的JSON内容
+            let formattedJson = '';
+            try {
+              // 从text字段提取并解析JSON
+              const llmContent = JSON.parse(data.output.text).llm;
+              // 移除代码块标记
+              formattedJson = llmContent.replace(/^```json\n|```$/g, '');
+
+              // 解析JSON数据
+              const jsonData = JSON.parse(formattedJson);
+
+              // 验证关键字段
+              const requiredFields = [
+                'top-sku-1', 'top-name-1', 'top-price-1', 'top-image-1', 'top-reason-1',
+                'top-sku-2', 'top-name-2', 'top-price-2', 'top-image-2', 'top-reason-2',
+                'top-sku-3', 'top-name-3', 'top-price-3', 'top-image-3', 'top-reason-3',
+                'bottom-sku-1', 'bottom-name-1', 'bottom-price-1', 'bottom-image-1', 'bottom-reason-1',
+                'bottom-sku-2', 'bottom-name-2', 'bottom-price-2', 'bottom-image-2', 'bottom-reason-2',
+                'bottom-sku-3', 'bottom-name-3', 'bottom-price-3', 'bottom-image-3', 'bottom-reason-3'
+              ];
+
+              const missingFields = requiredFields.filter(key => !(key in jsonData));
+              if (missingFields.length > 0) {
+                throw new Error(`缺失必要字段: ${missingFields.join(', ')}`);
               }
-            });
 
-            // 添加选中交互逻辑
-            function initImageSelection(imagePrefix, groupClass) {
-              document.querySelectorAll(`[id^='${imagePrefix}']`).forEach(img => {
-                img.addEventListener('click', function() {
-                  // 移除同组所有图片的选中状态
-                  document.querySelectorAll(`.${groupClass}`).forEach(el => {
-                    el.classList.remove('border-2', 'border-blue-500', 'shadow-lg');
-                  });
-                  // 添加选中样式
-                  this.classList.add('border-2', 'border-blue-500', 'shadow-lg');
-                  // 获取当前图片的url
-                  const modifiedSrc = this.src.slice(0, -3) + '100';
-                  if (this.alt === 'top') {
-                    sessionStorage.setItem('top_url', modifiedSrc);
-                  } else if (this.alt === 'bottom') {
-                    sessionStorage.setItem('bottom_url', modifiedSrc);
+              // 更新DOM元素（保持原有逻辑不变）
+              Object.entries(jsonData).forEach(([key, value]) => {
+                const element = document.getElementById(key);
+                if (element) {
+                  // 图片字段更新src属性
+                  if (key.startsWith('top-image-') || key.startsWith('bottom-image-')) {
+                    element.src = value.slice(0, -3) + '350';
+                    // 为已加载图片初始化选中功能
+                    if (!element.classList.contains('selection-initialized')) {
+                      const prefix = key.startsWith('top') ? 'top' : 'bottom';
+                      initImageSelection(`${prefix}-image-`, `${prefix}-selection`);
+                      element.classList.add('selection-initialized');
+                    }
                   }
+                  // 价格字段格式化
+                  else if (key.startsWith('top-price-') || key.startsWith('bottom-price-')) {
+                    element.textContent = `￥${parseFloat(value).toFixed(2)}`;
+                  }
+                  // SKU字段特殊处理
+                  else if (key.startsWith('top-sku-') || key.startsWith('bottom-sku-')) {
+                    element.textContent = value.startsWith('BOSS') ? value : `BOSS${value}`;
+                  }
+                  // 其他文本字段直接更新内容
+                  else {
+                    element.textContent = value;
+                  }
+                }
+              });
 
+              // 添加选中交互逻辑
+              function initImageSelection(imagePrefix, groupClass) {
+                document.querySelectorAll(`[id^='${imagePrefix}']`).forEach(img => {
+                  img.addEventListener('click', function () {
+                    // 移除同组所有图片的选中状态
+                    document.querySelectorAll(`.${groupClass}`).forEach(el => {
+                      el.classList.remove('border-2', 'border-blue-500', 'shadow-lg');
+                    });
+                    // 添加选中样式
+                    this.classList.add('border-2', 'border-blue-500', 'shadow-lg');
+                    // 获取当前图片的url
+                    const modifiedSrc = this.src.slice(0, -3) + '100';
+                    if (this.alt === 'top') {
+                      sessionStorage.setItem('top_url', modifiedSrc);
+                    } else if (this.alt === 'bottom') {
+                      sessionStorage.setItem('bottom_url', modifiedSrc);
+                    }
+
+                  });
                 });
-              });
-            }
-            
-            // 初始化上装和下装选择
-            initImageSelection('top-image-', 'top-selection');
-            initImageSelection('bottom-image-', 'bottom-selection');
+              }
 
-            // 添加重置选中状态功能
-            function resetSelection() {
-              // 移除所有上装选中状态
-              document.querySelectorAll('.top-selection').forEach(el => {
-                el.classList.remove('border-2', 'border-blue-500', 'shadow-lg');
-                sessionStorage.setItem('top_url', '');
-              });
-              // 移除所有下装选中状态
-              document.querySelectorAll('.bottom-selection').forEach(el => {
-                el.classList.remove('border-2', 'border-blue-500', 'shadow-lg');
-                sessionStorage.setItem('bottom_url', '');
-              });
-            }
-            
-            // 在初始化时暴露方法供按钮调用
-            window.resetSelection = resetSelection;
-          } catch (error) {
-            console.error('数据处理失败:', error);
-            console.error(formattedJson);
-            alert(`数据加载失败: ${error.message}`);
-            navigator.clipboard.writeText(formattedJson);
-            
+              // 初始化上装和下装选择
+              initImageSelection('top-image-', 'top-selection');
+              initImageSelection('bottom-image-', 'bottom-selection');
 
-          }
-        })
-        .catch(error => {
-          // 错误处理
-          document.getElementById('loading').classList.add('hidden');
-          console.error('Product recommendation error:', error);
-          alert(`API调用失败: ${error.message}`);
-          
-        });
+              // 添加重置选中状态功能
+              function resetSelection() {
+                // 移除所有上装选中状态
+                document.querySelectorAll('.top-selection').forEach(el => {
+                  el.classList.remove('border-2', 'border-blue-500', 'shadow-lg');
+                  sessionStorage.setItem('top_url', '');
+                });
+                // 移除所有下装选中状态
+                document.querySelectorAll('.bottom-selection').forEach(el => {
+                  el.classList.remove('border-2', 'border-blue-500', 'shadow-lg');
+                  sessionStorage.setItem('bottom_url', '');
+                });
+              }
+
+              // 在初始化时暴露方法供按钮调用
+              window.resetSelection = resetSelection;
+            } catch (error) {
+              console.error('数据处理失败:', error);
+              console.error(formattedJson);
+              alert(`数据加载失败: ${error.message}`);
+              navigator.clipboard.writeText(formattedJson);
+
+
+            }
+          })
+          .catch(error => {
+            // 错误处理
+            document.getElementById('loading').classList.add('hidden');
+            console.error('Product recommendation error:', error);
+            alert(`API调用失败: ${error.message}`);
+
+          });
       });
     }
 
@@ -397,5 +414,5 @@
     }
   </script>
 </body>
+
 </html>
-  

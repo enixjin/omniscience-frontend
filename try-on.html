@@ -63,6 +63,9 @@
         <div id="reupload-image" class="border-2 border-dashed border-gray-300 rounded-lg p-2 text-center">
           <button id="reupload" class="text-sm text-blue-500">重新上传原图</button>
         </div>
+        <div id="reupload-image" class="border-2 border-dashed border-gray-300 rounded-lg p-2 text-center">
+          <button id="gen" class="text-sm text-blue-500">生成试穿</button>
+        </div>
       </div>
 
       <!-- 试衣效果 -->
@@ -77,12 +80,12 @@
           <div class="grid grid-cols-3 gap-2">
             <div class="text-center cursor-pointer">
               <img id="top_url" src="https://groupd-image.oss-cn-shanghai.aliyuncs.com/top.jpeg"
-                class="w-full h-20 object-cover rounded mb-1">
+                class="w-full object-cover rounded mb-1">
               <p class="text-xs">上装</p>
             </div>
             <div class="text-center cursor-pointer">
               <img id="bottom_url" src="https://groupd-image.oss-cn-shanghai.aliyuncs.com/buttom.jpeg"
-                class="w-full h-20 object-cover rounded mb-1">
+                class="w-full object-cover rounded mb-1">
               <p class="text-xs">裤子</p>
             </div>
           </div>
@@ -91,7 +94,7 @@
         <!-- 对比效果 -->
         <div class="before-after-container mb-4">
           <div>
-            <div class="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
+            <div class="relative bg-gray-200 rounded-lg overflow-hidden">
               <img id="original-image"
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
                 class="w-full h-full object-cover">
@@ -99,14 +102,13 @@
             <p class="before-after-label">原图</p>
           </div>
           <div>
-            <div class="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
+            <div class="relative bg-gray-200 rounded-lg overflow-hidden">
               <img id="try-on-image"
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
                 class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-30"></div>
               <div class="absolute bottom-0 left-0 right-0 p-2">
                 <p class="text-white text-sm font-medium">上衣+裤子</p>
-                <p class="text-white text-xs">总价¥3,899</p>
               </div>
             </div>
             <p class="before-after-label">试穿效果</p>
@@ -176,6 +178,12 @@
           //alert('Upload failed: ' + error.message);
         }
       }
+    });
+
+    document.getElementById('gen').addEventListener('click', async () => {
+      document.getElementById('try-on-image').src = "https://groupd-image.oss-cn-shanghai.aliyuncs.com/loading.png";
+      let personImage = localStorage.getItem('original-image');
+      await tryon(personImage);
     });
 
     const tryon = async (personImageUrl) => {
@@ -291,6 +299,42 @@
         //alert(`https://groupd-image.oss-cn-shanghai.aliyuncs.com/${file.name}`);
       }
     };
+
+    // 添加全屏显示功能
+    const images = [
+      document.getElementById('top_url'),
+      document.getElementById('bottom_url'),
+      document.getElementById('original-image'),
+      document.getElementById('try-on-image')
+    ];
+
+    let isFullScreen = false; // 全屏状态标志
+
+    images.forEach(img => {
+      img.addEventListener('click', function () {
+        if (!isFullScreen) {
+          // 切换到全屏模式
+          this.style.position = 'fixed';
+          this.style.top = '0';
+          this.style.left = '0';
+          this.style.width = '100vw';
+          this.style.height = '100vh';
+          this.style.objectFit = 'contain';
+          this.style.zIndex = '1000'; // 确保图片在最上层
+        } else {
+          // 恢复原始尺寸
+          this.style.position = '';
+          this.style.top = '';
+          this.style.left = '';
+          this.style.width = '';
+          this.style.height = '';
+          this.style.objectFit = '';
+          this.style.zIndex = ''; // 恢复默认层级
+        }
+        isFullScreen = !isFullScreen; // 切换全屏状态
+      });
+    });
+
   </script>
 </body>
 
